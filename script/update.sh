@@ -5,7 +5,7 @@ echo "======  START SYNCING 206 SERVER ========="
 
 ssh root@139.196.13.206<<EOF
 ls
-cd /usr/local/nginx/html/shop/staic/wapdev
+cd /usr/local/nginx/html/shop
 ls
 
 git status
@@ -16,7 +16,6 @@ git pull origin master
 pwd
 
 
-gulp
 
 EOF
 
