@@ -2,6 +2,14 @@ var express = require('express');
 var router = express.Router();
 var pageRender = require('../service/pageRender');
 
+router.get('/',function(req, res, next){
+	pageRender.renderIndex(req,res).then(function(data){
+		res.render('./index',{data:data});
+	}).fail(function(err){
+		res.render('./index',{});
+	});	
+});
+
 router.get('/index',function(req, res, next){
 	pageRender.renderIndex(req,res).then(function(data){
 		res.render('./index',{data:data});
