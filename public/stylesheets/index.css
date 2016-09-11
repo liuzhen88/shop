@@ -1,0 +1,163 @@
+@charset "utf-8";
+/* CSS Document */
+/*-----------------------banner start-------------------------*/
+*{
+	font-family:"微软雅黑";}
+a,p,span,b{
+	text-decoration:none;}
+.banner {
+	width: 100%;
+	height: 550px;
+	overflow: hidden;
+	position: relative;
+	font-size: 16px;
+}
+.banner>.logo{
+	position:absolute !important;
+	left:32px;
+	top:17px;
+	z-index:80000000;
+}
+.banner>.chinese{
+	display:block;
+	width:50px;
+	height:26px;
+	line-height:26px;
+	position:absolute !important;	
+	right:120px;
+	top:24px;
+	border-right:rgba(176,176,176,1.00) solid 1px;
+	z-index:80000000;
+	font-weight:lighter;
+	color:#e14848;
+	cursor:pointer;
+	}
+.banner>.english{
+	display:block;
+	width:100px;
+	height:26px;
+	line-height:26px;
+	position:absolute !important;	
+	right:0px;
+	top:24px;
+	z-index:80000000;
+	cursor:pointer;
+	font-weight:lighter;
+	word-spacing:2px;
+	}
+.banner>.navbar{
+	width:826px;
+	height:80px;
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:60px;
+	margin:auto;
+	z-index:80000;
+	}
+	
+.banner>.navbar ul li{
+	width:110px;
+	height:76px;
+	background-color:#4f9bd6;
+	float:left;
+	border-radius:6px;
+	margin:0px 4px;
+	position:relative;}
+.navbar ul li.active{
+	background-color:#ff6801;}
+.banner>.navbar ul li a{
+	position:absolute;
+	width:110px;
+	height:76px;
+	top:0;
+	z-index:900;}	
+.banner>.navbar ul li a img{
+	display:block;
+	margin:8px auto;
+	margin-top:16px
+	}	
+.banner>.navbar ul li a p{
+	text-align:center;
+	font-size:14px;
+	color:rgba(255,255,255,1.00)
+	}	
+	
+	
+	
+	
+.b-img {
+	height: 500px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.b-img a {
+	display: block;
+	height: 550px;
+	float: left;
+}
+.b-list {
+	height: 50px;
+	padding-top: 700px;
+	position: relative;
+	margin: 0 auto;
+	z-index: 1;
+}
+.b-list span {
+	display: block;
+	cursor: pointer;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	border: 3px solid #fff;
+	float: left;
+	margin: 0 5px;
+	_margin: 0 3px;
+}
+.b-list .spcss {
+	border: 3px solid #14ab04;
+}
+.bar-left {
+	position: absolute;
+	z-index: 1;
+	display: block;
+	width: 100px;
+	height: 100%;
+	left: 0px;
+	background: none;
+	top: 0px;
+}
+.bar-right {
+	position: absolute;
+	z-index: 1;
+	display: block;
+	width: 100px;
+	height: 100%;
+	right: 0px;
+	background: none;
+	top: 0px;
+}
+.bar-left em {
+	display: block;
+	width: 50px;
+	height: 100px;
+	background: url(../images/arrow.png) 0px 0px no-repeat;
+	margin: 0 auto;
+	margin-top: 220px;
+}
+.bar-right em {
+	display: block;
+	width: 50px;
+	height: 100px;
+	background: url(../images/arrow.png) -50px 0px no-repeat;
+	margin: 0 auto;
+	margin-top: 220px;
+}
+.bar-left .emcss {
+	background-position: 0px -100px;
+}
+.bar-right .emcss {
+	background-position: -50px -100px;
+}
+
