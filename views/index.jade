@@ -1,10 +1,53 @@
-extends layout
-block title
-	title #{data.title}
-
-block content
-	.content
-
-
-block sub-js
-	script(src='/javascripts/index.js')
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title 无标题文档
+    link(rel='stylesheet', href='stylesheets/reset.css')
+    link(rel='stylesheet', href='stylesheets/index.css')
+    script(src='javascripts/jquery-2.1.4.min.js')
+    script(src='javascripts/banner.js')
+  body
+    .banner
+      a.logo(href='')
+        img(src='images/index_logo.png', alt='')
+      span.chinese 中文
+      span.english English
+      .navbar
+        ul
+          li.active
+            a(href='')
+              img(src='images/index_icon1.png', alt='')
+              p 主 页
+          li
+            a(href='')
+              img(src='images/index_icon2.png', alt='')
+              p 产品中心
+          li
+            a(href='')
+              img(src='images/index_icon3.png', alt='')
+              p 文档下载
+          li
+            a(href='')
+              img(src='images/index_icon4.png', alt='')
+              p 技术支持
+          li
+            a(href='')
+              img(src='images/index_icon5.png', alt='')
+              p 联系我们
+          li
+            a(href='')
+              img(src='images/index_icon6.png', alt='')
+              p 关于我们
+          li
+            a(href='')
+              img(src='images/index_icon7.png', alt='')
+              p 网上商城
+      .b-img
+        a(href='#', style='background:url(images/index_banner1.png) center no-repeat;')
+        a(href='#', style='background:url(images/index_banner1.png) center no-repeat;')
+        a(href='#', style='background:url(images/index_banner1.png) center no-repeat;')
+      a.bar-left(href='#')
+        em
+      a.bar-right(href='#')
+        em
