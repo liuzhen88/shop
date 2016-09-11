@@ -1,7 +1,12 @@
 doctype html
 html
   head
-    title= title
+    block title
+    link(rel='stylesheet',href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    .header 头部
     block content
+    .footer 
+    script(src='/javascripts/jquery-2.1.4.min.js')
+    block sub-js

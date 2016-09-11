@@ -14,6 +14,27 @@ var config = {
 	error:{
 		code:"80002",
 		message:"操作错误"
-	}
+	},
+	index:{
+		title:"主页"
+	},
+	productCenter:{
+		title:"产品中心"
+	},
+	download:{
+		title:"文档下载"
+	},
+	support:{
+		title:"技术支持"
+	},
+	contact:{
+		title:'联系我们'
+	},
+	about:{
+		title:'关于我们'
+	},
+	shop:{
+		title:"在线商城"
+	} 
 };
 module.exports = config;

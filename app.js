@@ -47,5 +47,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
+app.listen('3000',function(){
+  console.log('Node.js server start at port 3000 success');
+})
 
 module.exports = app;
