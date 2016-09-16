@@ -1,10 +1,44 @@
 extends layout
+block sub-css
+	link(rel='stylesheet', href='http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css')
 block title
 	title #{data.title}
 
 block content
-
-
-
+	.contact-content
+		.contact-content-top
+			.null-div
+			.map-title 地图查找
+			.map-alias MAP SEARCH
+			.line
+				img(src='/images/contact_underline.png')
+			.map-baidu
+				#l-map
+				#r-result
+					input#suggestId(placeholder='输入关键字查询')
+				#searchResultPanel(style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;")
+			.null-div
+			.map-title 联系方式
+			.map-alias CONTACT INFORMATION
+			.line
+				img(src='/images/contact_underline.png')
+			.contact-detail-container
+				ul
+					li.contact-address(style='margin-left:0px')
+						.contact-addree-icon
+						.contact-addree-detail
+							p 地址:江苏省南京市江宁区
+							p 东麒路33号东山国际企业研发园4楼
+					li.contact-tel
+						.contact-tel-icon
+						.contact-tel-detail
+							p 电话 ：+86-25-58817997
+					li.contact-email
+						.contact-email-icon
+						.contact-email-detail
+							p 邮件：sales@arance-rf.com( 销售 )
+							p tech@arance-rf.com( 技术支持 )
 block sub-js
+	script(src='http://api.map.baidu.com/api?v=2.0&ak=btsVVWf0TM1zUBEbzFz6QqWF')
+	script(src='http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js')
 	script(src='/javascripts/contact.js')

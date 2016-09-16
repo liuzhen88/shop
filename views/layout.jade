@@ -4,9 +4,131 @@ html
     block title
     link(rel='stylesheet',href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    block sub-css
   body
-    .header 头部
+    .header 
+        .header-top
+        .header-bottom
+            ul
+                - if(!data || !data.router || data.router == 'index')
+                    li.active
+                        a(href='/index')
+                            img(src='images/index_icon1.png', alt='')
+                            p 主 页
+                - else
+                    li
+                        a(href='/index')
+                            img(src='images/index_icon1.png', alt='')
+                            p 主 页
+                - if(data && data.router && data.router == 'productCenter')
+                    li.active
+                        a(href='/productCenter')
+                            img(src='images/index_icon2.png', alt='')
+                            p 产品中心
+                - else
+                    li
+                        a(href='/productCenter')
+                            img(src='images/index_icon2.png', alt='')
+                            p 产品中心
+                - if(data && data.router && data.router == 'download')
+                    li.active
+                        a(href='/download')
+                            img(src='images/index_icon3.png', alt='')
+                            p 文档下载
+                - else
+                    li
+                        a(href='/download')
+                            img(src='images/index_icon3.png', alt='')
+                            p 文档下载
+                - if(data && data.router && data.router == 'support')
+                    li.active
+                        a(href='/support')
+                            img(src='images/index_icon4.png', alt='')
+                            p 技术支持
+                - else
+                    li
+                        a(href='/support')
+                            img(src='images/index_icon4.png', alt='')
+                            p 技术支持
+                - if(data && data.router && data.router == 'contact')
+                    li.active
+                        a(href='/contact')
+                            img(src='images/index_icon5.png', alt='')
+                            p 联系我们
+                - else
+                    li
+                        a(href='/contact')
+                            img(src='images/index_icon5.png', alt='')
+                            p 联系我们
+                - if(data && data.router && data.router == 'about')
+                    li.active
+                        a(href='/about')
+                            img(src='images/index_icon6.png', alt='')
+                            p 关于我们
+                - else
+                    li
+                        a(href='/about')
+                            img(src='images/index_icon6.png', alt='')
+                            p 关于我们
+                - if(data && data.router && data.router == 'shop')
+                    li.active
+                        a(href='')
+                            img(src='images/index_icon7.png', alt='')
+                            p 网上商城
+                - else
+                    li
+                        a(href='')
+                            img(src='images/index_icon7.png', alt='')
+                            p 网上商城
     block content
-    .footer 
+    .footer
+        .footer-content
+            .footer-content-container
+                .footer-cont
+                .footer-about-us.font
+                    .footer-about-us-header 
+                        i 关于我们
+                    .footer-about-us-list 
+                        a(href="#") 公司简介
+                    .footer-about-us-list 
+                        a(href="#") 资质文件
+                    .footer-about-us-list 
+                        a(href="#") 公司新闻
+                    .footer-about-us-list 
+                        a(href="#") 公司环境
+                .footer-support
+                    .footer-about-us-header 
+                        i 技术支持
+                    .footer-about-us-list 
+                        a(href="#") 产品命名规则
+                    .footer-about-us-list 
+                        a(href="#") 维修和定制业务
+                    .footer-about-us-list 
+                        a(href="#") 技术文章
+                    .footer-about-us-list 
+                        a(href="#") 产品手册下载
+                .footer-contact
+                    .footer-about-us-header 
+                        i 联系我们
+                    .footer-support-address 
+                        a(href="#") 地址 ： 江苏省南京市江宁区东麒路33号东山国际
+                    .footer-address 
+                        a(href="#") 企业研发园4楼
+                    .footer-email
+                        .footer-about-us-headers 
+                        .footer-support-email 
+                            a(href="#") 邮编 ： 211100
+                    .footer-email
+                        .footer-about-us-headers 
+                        .footer-support-tel 
+                            a(href="#") 电话 ： +86-25-58817997
+                .footer-other
+                    .footer-about-us-header
+                    .footer-cz
+                        a(href="#") 传真 ：+86-25-580722397
+                    .footer-yj
+                        a(href="#") 邮件 ：sales@arance-rf.com( 销售 )
+                    .footer-yj-null
+                        a(href="#") tech@arance-rf.com( 技术支持 )
     script(src='/javascripts/jquery-2.1.4.min.js')
     block sub-js

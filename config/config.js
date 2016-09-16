@@ -35,6 +35,20 @@ var config = {
 	},
 	shop:{
 		title:"在线商城"
-	} 
+	},
+	list:[
+		{
+			name:"狗勇鸡头孩啊"
+		},
+		{
+			name:"那个人啊砸钱啊"
+		},
+		{
+			name:"小滑头放牛啊"
+		},
+		{
+			name:"狗勇这个傻逼"
+		}
+	] 
 };
 module.exports = config;
