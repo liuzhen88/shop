@@ -1,10 +1,57 @@
 extends layout
 block title
-	title #{data.title}
-
+  title #{data.title}
+block sub-css
+  link(rel='stylesheet', href='/stylesheets/index.css') 
 block content
-	.test
-
-
+  .products
+    .allheads.theme2
+        h2 产品中心
+        p PRODUCTS CENTER
+    .productall
+        ul.navs
+          li.lisa 电缆组件
+          li 同轴机械校准件
+          li NMD矢网端口转接器
+          li 测试附件
+        .setproduct
+          ul
+            li.checked
+              img(src='images/product_img1.JPG', alt='')
+              p 高性能稳幅稳相VNA测试电缆组件
+            li
+              img(src='images/product_img2.JPG', alt='')
+              p 高性能稳幅稳相VNA测试电缆组件1
+            li
+              img(src='images/product_img3.JPG', alt='')
+              p 高性能稳幅稳相VNA测试电缆组件2
+            li
+              img(src='images/product_img4.JPG', alt='')
+              p 高性能稳幅稳相VNA测试电缆组件3
+            li
+              img(src='images/product_img5.JPG', alt='')
+              p 高性能稳幅稳相VNA测试电缆组件4
+            li
+              img(src='images/product_img6.JPG', alt='')
+              p 高性能稳幅稳相VNA测试电缆组件5
+            li
+              img(src='images/product_img7.JPG', alt='')
+              p 高性能稳幅稳相VNA测试电缆组件6
+            li
+              img(src='images/product_img8.JPG', alt='')
+              p 高性能稳幅稳相VNA测试电缆组件7
+    .producttitle
+      img(src='images/tecno_icon2.png', alt='')
+      p 高性能稳幅稳相VNA测试电缆组件
+    .productmore
+      .leftproduct
+        img(src='images/product_img1.JPG', alt='')
+        p 高性能稳幅稳相VNA测试电缆组件
+      .rightproduct
+        p
+          | 安崇电子提供的NAC系列高性能稳幅稳相测试电缆组件，主要用于配合矢量网络分析仪(VNA)的测试应用，采用了专利技术设计并经过特殊的工艺处理，可满足实验室、生产线、测试系统等条件下微波电参数的精密测量。其主要特点是:在DC~67GHz范围内具有极为稳定的电压驻波比及插入损耗；拥有极其优异的机械相位稳定性和连接重复性，端口采用NMD连接器，具有坚固轻巧的机械结构，可承受弯曲、挤压、扭曲、拉伸等外力并保持可靠性能。
+        .imggroup
+          img(src='images/productimages.png', alt='')
+        input(type='button', value='下载pdf')
 block sub-js
-	script(src='/javascripts/product_center.js')
+  script(src='/javascripts/product_center.js')
