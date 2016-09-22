@@ -20,7 +20,7 @@ a {
 }
 .header-logo{
 	position: absolute;
-	left: 32px;
+	left: 0px;
 	top: 17px;
 }
 .chinese{
@@ -29,7 +29,7 @@ a {
 	height:26px;
 	line-height:26px;
 	position:absolute !important;	
-	right:103px;
+	right:90px;
 	top:24px;
 	border-right:rgba(176,176,176,1.00) solid 1px;
 	z-index:80000000;
@@ -39,11 +39,11 @@ a {
 }
 .english{
 	display:block;
-	width:50px;
+	width:70px;
 	height:26px;
 	line-height:26px;
 	position:absolute !important;	
-	right:33px;
+	right:0px;
 	top:24px;
 	z-index:80000000;
 	cursor:pointer;
@@ -95,7 +95,7 @@ a {
 .footer{
 	width: 100%;
 	height: 330px;
-	background: #21679e;
+	background: #A1A2A5;
 	margin: 0 auto;
 }
 .footer-content{
@@ -138,7 +138,7 @@ a {
 	background-image: url('../images/footer_icon1.png');
 	background-position: left center;
 	background-repeat: no-repeat;
-	font-size: 14px;
+	font-size: 12px;
 	margin-bottom: 25px;
 }
 .footer-support-address{
@@ -222,20 +222,21 @@ a {
 	font-size: 30px;
 	text-align: center;
 	font-weight: 100;
-	letter-spacing: 1px;
-	font-family: '宋体';
+	letter-spacing: 2px;
+	font-family: '微软雅黑';
 }
 .map-alias{
 	width: 100%;
-	font-size: 18px;
+	font-size: 20px;
 	text-align: center;
 	margin-top: 15px;
-	color: #0b0b0b;
+	color: #666;
 }
 .line{
 	width: 815px;
 	height: 2px;
 	margin: 0px auto;
+	margin-top: 4px;
 }
 .map-baidu{
 	width: 1200px;
@@ -578,4 +579,10 @@ dd{
 .test{
 	width: 100%;
 	height: 1000px;
+}
+.middle{
+	width: 1200px;
+	height: 100px;
+	margin: 0 auto;
+	position: relative;
 }

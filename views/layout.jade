@@ -8,10 +8,11 @@ html
   body
     .header 
         .header-top
-            a.header-logo(href='/index')
-                img(src='/images/index_logo.png')
-            span.chinese 中文
-            span.english English
+            .middle
+                a.header-logo(href='/index')
+                    img(src='/images/index_logo.png')
+                span.chinese 中文
+                span.english English
         .header-bottom
             ul
                 - if(!data || !data.router || data.router == 'index')
