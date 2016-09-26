@@ -58,5 +58,15 @@ router.get('/about',function(req, res, next){
 	});	
 });
 
+router.get("/login",function(req,res,next){
+	res.render("./admin/login",{});
+});
+
+router.get("/admin/index",function(req,res,next){
+	pageRender.checkSession(req, res, function(data){
+		data.this_position="首页广告图";
+		res.render('./admin/index', {data:data});
+	});
+});
 
 module.exports = router;

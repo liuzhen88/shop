@@ -1,4 +1,6 @@
 var config = {
+	serverUrl:"http://139.196.13.206:3000",
+	dbUrl:"mongodb://139.196.13.206/shopmall",
 	success:{
 		code:"200",
 		message:"ok"
@@ -49,6 +51,44 @@ var config = {
 		{
 			name:"测试数据产品文档四"
 		}
-	] 
+	],
+	data:{
+		success:{
+			code:"200",
+			message:"ok"
+		},
+		error:{
+			code:"500",
+			message:"server is error"
+		},
+		missParameter:{
+			code:"400",
+			message:"miss parameter"
+		},
+		notFound:{
+			code:"404",
+			message:"get data is null"
+		},
+		notPass:{
+			code:"80001",
+			message:"原始密码错误"
+		},
+		hasExit:{
+			code:"80001",
+			message:"您添加的分类已存在,请重新添加"
+		},
+		notClassId:{
+			code:"80001",
+			message:"更新失败,服务器繁忙"
+		},
+		notFindDeleteObj:{
+			code:"80001",
+			message:"删除失败,无此记录"
+		},
+		notCreat:{
+			code:"80001",
+			message:"添加失败,该分类已存在!"
+		}
+	} 
 };
 module.exports = config;

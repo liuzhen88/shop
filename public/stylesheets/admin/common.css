@@ -1,0 +1,147 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+body{
+	background: #f7f8fa;
+}
+.title{
+	width: 100%;
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+	background: #fff;
+	font-size: 18px;
+	color: #666;
+	letter-spacing: 1px;
+}
+.container{
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 10px;
+	border: solid #e7e7e7 1px;
+	margin-top: 30px;
+	position: relative;
+	  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+	  transition: box-shadow 0.2s;
+	  -webkit-transition: box-shadow 0.2s;
+}
+.container-left{
+	width: 240px;
+	min-height: 1000px;
+	float: left;
+	background: #fff;
+}
+.container-right{
+	width: 957px;
+	min-height: 1000px;
+	border-left: none;
+	float: right;
+	border-left: solid #e9eeef 1px; 
+	padding-bottom: 30px;
+	background: #fff;
+}
+.bg-box{
+	position: absolute;
+	left: 0;
+	top: 60px;
+	width: 100%;
+	height: 220px;
+	z-index: -1;
+	background: #f7f8fa;
+	background-image: url("http://cache.qixin.com/images/bg_page.png");
+}
+.clear-float{
+	clear: both;
+}
+.bar-logo{
+	width: 240px;
+	height: 120px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow: hidden;
+}
+.bar-logo img{
+	width: 240px;
+	height: 120px;
+}
+.container-right-top{
+	width: 100%;
+	height: 75px;
+}
+.container-right-title{
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	font-size: 18px;
+}
+.container-admin-info{
+	width: 100%;
+	height: 50px;
+	border-top: solid #e9eeef 1px;
+	border-bottom: solid #e9eeef 1px;
+}
+.this-position{
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	color: #999;
+	padding-left: 10px;
+}
+.admin-actions{
+	float: right;
+	height: 50px;
+}
+.modfiy-password{
+	display: inline-block;
+	width: 100px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	border:solid #e9eeef 1px;
+	border-radius: 4px;
+	margin-top: 12px;
+	margin-right: 10px;
+	cursor: pointer;
+	background:#14ACFC;
+	color: #fff;
+}
+.exit-login{
+	display: inline-block;
+	width: 100px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	border:solid #e9eeef 1px;
+	border-radius: 4px;
+	margin-top: 12px;
+	margin-right: 10px;
+	cursor: pointer;
+	background:#14ACFC;
+	color: #fff;
+}
+.list-container-null{
+	width: 100%;
+	height: 20px;
+	border-bottom: solid #e9eeef 1px;
+}
+.list{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-bottom:solid #e9eeef 1px;
+	cursor: pointer;
+}
+.list:hover{
+	 position: relative;
+	  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+	  transition: box-shadow 0.2s;
+	  -webkit-transition: box-shadow 0.2s;
+}
+.has-select{
+	color: red;
+}

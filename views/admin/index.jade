@@ -1,0 +1,27 @@
+extends layoutCommon
+
+block content
+	div.bg-box
+	div.title 南京安崇电子有限公司后台管理系统
+	div.container
+		div.container-left
+			div.bar-logo
+				img(src="#{data.logoUrl}")
+			.list-container
+				.list-container-null
+				- for(var i=0;i<data.list.length;i++)
+					.list #{data.list[i]}
+		div.container-right
+			.container-right-top
+				//- .container-right-title 易卖会后台管理系统
+				.container-admin-info
+					.this-position 您的当前位置: 
+						span.this-position-color #{data.this_position}
+					.admin-actions
+						span.modfiy-password 修改密码
+						span.exit-login 退出登录
+			.container-right-body
+				block sub_content
+		div.clear-float
+
+

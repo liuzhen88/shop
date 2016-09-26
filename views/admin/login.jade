@@ -1,0 +1,18 @@
+extends layout
+
+block content
+	.container
+		.container-top
+		.container-main
+			.container-main-content
+				.username
+					span.span 用户名:
+					input#username(type="text" name="username" placeholder="请输入用户名")
+				.password
+					span.span 密	码	:
+					input#password(type="password" name="password" placeholder="请输入密码")
+		.container-foot
+			div#btn 登录
+block sub-js
+	script(type="text/javascript" src="/javascripts/cookie.js")
+	script(src='/javascripts/login.js')
