@@ -1,5 +1,6 @@
 var q = require('q');
 var config = require('../config/config');
+var bannerModel = require("../schema/staicUploadImg");
 
 function renderIndex(req, res){
 	var deferred = q.defer();
@@ -68,18 +69,33 @@ function checkSession(req , res, next){
 		res.redirect("/login");
 		return;
 	}
-	var data = {
-		logoUrl:"/images/logo.png",
-		this_position:"",
-		list:[
-			"首页广告图",
-			"商品展示",
-			"公告管理",
-			"分类管理",
-			"专题管理"
-		]
-	}
-	next(data);
+	getBannerData(function(bannerData){
+		var data = {
+			logoUrl:"/images/logo.png",
+			this_position:"",
+			list:[
+				"首页广告图",
+				"商品展示",
+				"公告管理",
+				"分类管理",
+				"专题管理"
+			],
+			bannerImageData:bannerData
+		}
+		next(data);
+	});
+}
+
+function getBannerData(cb){
+	bannerModel.findOne({
+		"type":"banner"
+	},function(err,docs){
+		if(err){
+			console.log("search banner data is error:"+error);
+			return;
+		}
+		cb(docs);
+	});
 }
 
 module.exports = {

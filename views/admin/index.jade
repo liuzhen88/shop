@@ -1,27 +1,31 @@
-extends layoutCommon
+extends indexCommon
 
-block content
-	div.bg-box
-	div.title 南京安崇电子有限公司后台管理系统
-	div.container
-		div.container-left
-			div.bar-logo
-				img(src="#{data.logoUrl}")
-			.list-container
-				.list-container-null
-				- for(var i=0;i<data.list.length;i++)
-					.list #{data.list[i]}
-		div.container-right
-			.container-right-top
-				//- .container-right-title 易卖会后台管理系统
-				.container-admin-info
-					.this-position 您的当前位置: 
-						span.this-position-color #{data.this_position}
-					.admin-actions
-						span.modfiy-password 修改密码
-						span.exit-login 退出登录
-			.container-right-body
-				block sub_content
-		div.clear-float
-
-
+block sub_content
+	div.addImageContainer
+		div.addImage 新增广告图
+		input#upload(type="file")
+	div.preview-container
+		.preview-title 效果预览图	:
+		.preview-img-container
+		.upload-file#btn 确认上传
+	div.server-has-img 线上banner区 :
+		span.tishi ( 请慎重修改,一旦删除无法恢复 )
+	div.imgs-container
+		- if(data && data.bannerImageData && data.bannerImageData.banner)
+			- if(data.bannerImageData.banner.length>0)
+			- for(var i=0;i<data.bannerImageData.banner.length;i++)
+				div.lists-container
+					div.banner-conatiner-data
+						img.banner-data-url(src="#{data.bannerImageData.banner[i].bannerUrl}" data-id="#{data.bannerImageData.banner[i]._id}")
+					div.go-where
+						div.go-where-left
+							span 跳转链接 :
+							input.img-href.disable(type="text" placeholder="请输入跳转链接" readonly="readonly" value="#{data.bannerImageData.banner[i].href}")
+						div.go-right-actions
+							span.edit.common-style 编辑
+							span.save.common-style 保存
+							span.del.common-style 删除
+	div.loading
+		div.loading-gif
+			img(src="/images/load.gif")
+	script(src="/javascripts/upload.js")

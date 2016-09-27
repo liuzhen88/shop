@@ -89,6 +89,8 @@ var config = {
 			code:"80001",
 			message:"添加失败,该分类已存在!"
 		}
-	} 
+	},
+	path:"public/images/upload/",
+	uploadUrl:"http://139.196.13.206/shop/public/images/upload"
 };
 module.exports = config;
