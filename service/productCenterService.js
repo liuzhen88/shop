@@ -40,7 +40,7 @@ function saveProductData(req, res){
 	    		title:title,
 	    		fileName:fileName,
 	    		fileType:fileType,
-	    		url:productUrl+"/"+lastFileName,
+	    		url:config.productUrl+"/"+lastFileName,
 	    		content:content,
 	    		createTime:new Date().getTime()
 	    	});
