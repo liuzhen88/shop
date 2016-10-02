@@ -23,16 +23,16 @@ function saveProductData(req, res){
 
 	fs.writeFile(fileName,dataBuffer,function(err){
 		if(err){
-	    	var content = config.data.error;
-	    	content.message = err;
-	      	deferred.reject(content);
+	    	var cont = config.data.error;
+	    	cont.message = err;
+	      	deferred.reject(cont);
 	    }
 	    fs.rename(fileName,newFilePath,function(err){
 	    	if(err){
 	    		console.log("file rename is error:"+err);
-	    		var content = config.data.error;
-		    	content.message = err;
-		      	deferred.reject(content);
+	    		var cont = config.data.error;
+		    	cont.message = err;
+		      	deferred.reject(cont);
 	    	}
 	    	//write success then save product center data 	
 
