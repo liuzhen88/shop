@@ -79,7 +79,7 @@ function saveProductData(req, res){
 			    		createTime:new Date().getTime()
 	    			};
 	    			list.push(lists);
-	    			productCenterSchema.updateOne({
+	    			productCenterSchema.update({
 	    				"_id":id
 	    			},{
 	    				$set:{
