@@ -27,7 +27,7 @@ function saveProductData(req, res){
 	    	content.message = err;
 	      	deferred.reject(content);
 	    }
-	    fs.rename(name,newFilePath,function(err){
+	    fs.rename(fileName,newFilePath,function(err){
 	    	if(err){
 	    		console.log("file rename is error:"+err);
 	    		var content = config.data.error;
