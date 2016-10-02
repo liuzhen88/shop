@@ -308,7 +308,7 @@ body{
 .this-position-color{
 	color: #ff0000;
 }
-.password{
+.password,#addNewProductClass{
 	width: 80%;
 	border:solid #e9eeef 1px;
 	height: 30px;
@@ -320,7 +320,7 @@ body{
 .new-password{
 	margin-left: 23px;
 }
-.confirm-modify-submit,.save-news,.save-product{
+.confirm-modify-submit,.save-news,.save-product,.save-new-product-class{
 	width: 250px;
 	height: 40px;
 	line-height: 40px;

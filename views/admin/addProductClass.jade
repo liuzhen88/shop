@@ -1,0 +1,11 @@
+extends indexCommon
+
+block sub_content
+	.container-right-body
+		.form-control
+			div
+				span 新增分类名：
+				input#addNewProductClass(type='text' placeholder='请输入新增产品分类名')
+			.save-new-product-class#saveProductName 保存
+block sub-js
+	script(src='/javascripts/admin_add_product_class.js')

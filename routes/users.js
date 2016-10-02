@@ -53,4 +53,12 @@ router.post('/saveProductData',function(req,res){
 	});
 });
 
+router.post('/saveNewProductClass',function(req,res){
+	productCenterService.saveNewProductClass(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
 module.exports = router;

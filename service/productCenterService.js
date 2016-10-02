@@ -2,7 +2,6 @@ var q = require('q');
 var productCenterSchema = require('../schema/productCenterSchema');
 var config = require("../config/config");
 var fs = require("fs");
-var _ = require("underscore");
 
 function saveProductData(req, res){
 	var deferred = q.defer();
@@ -101,6 +100,26 @@ function saveProductData(req, res){
 	return deferred.promise;
 }
 
+function saveNewProductClass(req, res){
+	var deferred = q.defer();
+	var productClass = req.body.productClass;
+	var insertData = new productCenterSchema({
+		productClass:productClass,
+		list:[]
+	});
+	insertData.save(function(err){
+		if(err){
+			console.log(err);
+			deferred.reject(err);
+		}
+		var context = config.data.success;
+		deferred.resolve(context);
+	});
+
+	return deferred.promise;
+}
+
 module.exports = {
-	saveProductData:saveProductData
+	saveProductData:saveProductData,
+	saveNewProductClass:saveNewProductClass
 }

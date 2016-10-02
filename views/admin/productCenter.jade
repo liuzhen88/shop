@@ -13,7 +13,7 @@ block sub_content
 				- for(var i=0;i<data.productClass.length;i++)
 					option #{data.productClass[i]}
 		span
-			a.create-class-a(href='') 点此创建分类
+			a.create-class-a(href='/admin/addProductClass') 点此创建分类
 		.product-title-describe
 			span 标题 : 
 			input.form-control.common-input#product-title(type='text' placeholder='请输入产品名称标题说明')

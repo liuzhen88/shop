@@ -90,6 +90,13 @@ router.get("/admin/productCenter",function(req,res,next){
 	});
 });
 
+router.get('/admin/addProductClass',function(req,res,next){
+	pageRender.checkSessionByAddProductClass(req,res,function(data){
+		data.this_position="新增产品中心分类";
+		res.render('./admin/addProductClass', {data:data});
+	});
+});
+
 router.get("/modifyPassword",function(req,res,next){
 	pageRender.checkSession(req,res,function(data){
 		data.this_position = "修改密码";

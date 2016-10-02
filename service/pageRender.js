@@ -139,6 +139,25 @@ function checkSessionByProductCenter(req, res, next){
 	});
 }
 
+function checkSessionByAddProductClass(req, res, next){
+	if(!req.session.user){
+		res.redirect("/login");
+		return;
+	}
+	var data = {
+		logoUrl:"/images/logo.png",
+		this_position:"",
+		list:[
+			"首页广告图",
+			"产品中心",
+			"文档下载",
+			"技术支持",
+			"关于我们"
+		]
+	}
+	next(data);
+}
+
 function getBannerData(cb){
 	bannerModel.findOne({
 		"type":"banner"
@@ -186,5 +205,6 @@ module.exports = {
 	renderAbout:renderAbout,
 	checkSession:checkSession,
 	checkSessionByAbout:checkSessionByAbout,
-	checkSessionByProductCenter:checkSessionByProductCenter
+	checkSessionByProductCenter:checkSessionByProductCenter,
+	checkSessionByAddProductClass:checkSessionByAddProductClass
 }
