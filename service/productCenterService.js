@@ -4,7 +4,7 @@ var config = require("../config/config");
 var fs = require("fs");
 var _ = require("underscore");
 
-function productCenterService(req, res){
+function saveProductData(req, res){
 	var deferred = q.defer();
 	var productClass = req.body.productClass;
 	var title = req.body.title;
@@ -60,5 +60,5 @@ function productCenterService(req, res){
 }
 
 module.exports = {
-	productCenterService:productCenterService
+	saveProductData:saveProductData
 }
