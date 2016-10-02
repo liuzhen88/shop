@@ -2,6 +2,7 @@ var q = require('q');
 var config = require('../config/config');
 var bannerModel = require("../schema/staicUploadImg");
 var newsSchema = require('../schema/newsSchema');
+var productCenterSchema = require('../schema/productCenterSchema');
 
 function renderIndex(req, res){
 	var deferred = q.defer();
@@ -117,18 +118,25 @@ function checkSessionByProductCenter(req, res, next){
 		res.redirect("/login");
 		return;
 	}
-	var data = {
-		logoUrl:"/images/logo.png",
-		this_position:"",
-		list:[
-			"首页广告图",
-			"产品中心",
-			"文档下载",
-			"技术支持",
-			"关于我们"
-		]
-	}
-	next(data);
+	getProductCenterData(function(err,productClass){
+		if(err){
+			console.log(err);
+			return;
+		}
+		var data = {
+			logoUrl:"/images/logo.png",
+			this_position:"",
+			list:[
+				"首页广告图",
+				"产品中心",
+				"文档下载",
+				"技术支持",
+				"关于我们"
+			],
+			productClass:productClass
+		}
+		next(data);
+	});
 }
 
 function getBannerData(cb){
@@ -153,6 +161,19 @@ function getNewsData(callback){
 			return;
 		}
 		callback('',docs);
+	});
+}
+
+function getProductCenterData(callback){
+	productCenterSchema.find({}).exec(function(err,docs){
+		if(err){
+			callback(err);
+		}
+		var productClass = [];
+		docs.forEach(function(value,index){
+			productClass.push(value.productClass);
+		});
+		callback('',productClass);
 	});
 }
 

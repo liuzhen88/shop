@@ -9,6 +9,9 @@ block sub_content
 	.product-class-container
 		span 分类 : 
 		select.form-control.common-input#product-class
+			- if(data.productClass.length>0)
+				- for(var i=0;i<data.productClass.length;i++)
+					option #{data.productClass[i]}
 		span
 			a.create-class-a(href='') 点此创建分类
 		.product-title-describe
