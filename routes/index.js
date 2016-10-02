@@ -76,4 +76,25 @@ router.get("/admin/index",function(req,res,next){
 	});
 });
 
+router.get("/admin/about",function(req,res,next){
+	pageRender.checkSessionByAbout(req, res, function(data){
+		data.this_position="关于我们";
+		res.render('./admin/about', {data:data});
+	});
+});
+
+router.get("/admin/productCenter",function(req,res,next){
+	pageRender.checkSessionByProductCenter(req, res, function(data){
+		data.this_position="产品中心";
+		res.render('./admin/productCenter', {data:data});
+	});
+});
+
+router.get("/modifyPassword",function(req,res,next){
+	pageRender.checkSession(req,res,function(data){
+		data.this_position = "修改密码";
+		res.render('./admin/modifyPassword',{data});
+	});
+});
+
 module.exports = router;

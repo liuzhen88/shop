@@ -1,6 +1,7 @@
 var q = require('q');
 var config = require('../config/config');
 var bannerModel = require("../schema/staicUploadImg");
+var newsSchema = require('../schema/newsSchema');
 
 function renderIndex(req, res){
 	var deferred = q.defer();
@@ -59,8 +60,14 @@ function renderAbout(req, res){
 	var context = {};
 	context.title = config.support.title;
 	context.router = 'about';
-	deferred.resolve(context);
-
+	getNewsData(function(err,docs){
+		if(err){
+			deferred.reject(err);
+		}else{
+			context.data = docs;
+			deferred.resolve(context);
+		}
+	});
 	return deferred.promise;
 }
 
@@ -75,15 +82,53 @@ function checkSession(req , res, next){
 			this_position:"",
 			list:[
 				"首页广告图",
-				"商品展示",
-				"公告管理",
-				"分类管理",
-				"专题管理"
+				"产品中心",
+				"文档下载",
+				"技术支持",
+				"关于我们"
 			],
 			bannerImageData:bannerData
 		}
 		next(data);
 	});
+}
+
+function checkSessionByAbout(req, res, next){
+	if(!req.session.user){
+		res.redirect("/login");
+		return;
+	}
+	var data = {
+		logoUrl:"/images/logo.png",
+		this_position:"",
+		list:[
+			"首页广告图",
+			"产品中心",
+			"文档下载",
+			"技术支持",
+			"关于我们"
+		]
+	}
+	next(data);
+}
+
+function checkSessionByProductCenter(req, res, next){
+	if(!req.session.user){
+		res.redirect("/login");
+		return;
+	}
+	var data = {
+		logoUrl:"/images/logo.png",
+		this_position:"",
+		list:[
+			"首页广告图",
+			"产品中心",
+			"文档下载",
+			"技术支持",
+			"关于我们"
+		]
+	}
+	next(data);
 }
 
 function getBannerData(cb){
@@ -98,6 +143,19 @@ function getBannerData(cb){
 	});
 }
 
+function getNewsData(callback){
+	newsSchema.find({}).sort({
+		"timeStr":-1
+	}).exec(function(err,docs){
+		if(err){
+			console.log(err);
+			callback(err);
+			return;
+		}
+		callback('',docs);
+	});
+}
+
 module.exports = {
 	renderIndex:renderIndex,
 	renderProductCenter:renderProductCenter,
@@ -105,5 +163,7 @@ module.exports = {
 	renderSupport:renderSupport,
 	renderContact:renderContact,
 	renderAbout:renderAbout,
-	checkSession:checkSession
+	checkSession:checkSession,
+	checkSessionByAbout:checkSessionByAbout,
+	checkSessionByProductCenter:checkSessionByProductCenter
 }

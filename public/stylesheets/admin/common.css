@@ -17,7 +17,7 @@ body{
 	color: #666;
 	letter-spacing: 1px;
 }
-.container{
+.containers{
 	width: 1200px;
 	margin: 0 auto;
 	margin-top: 10px;
@@ -320,7 +320,7 @@ body{
 .new-password{
 	margin-left: 23px;
 }
-.confirm-modify-submit{
+.confirm-modify-submit,.save-news,.save-product{
 	width: 250px;
 	height: 40px;
 	line-height: 40px;
@@ -1035,4 +1035,76 @@ body{
 	height: 70px;
 	left: 0;
 	bottom: 0;
+}
+#editor-container {
+  height: 400px;
+}
+.news-title{
+	text-align: center;
+	margin-bottom: 20px;
+}
+.new-title-container{
+	text-indent: 5px;
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+}
+.product-class-container{
+	margin-left: 50px;
+}
+.create-class-a{
+	margin-left: 10px;
+	color: #ff0000;
+}
+.main-img-container{
+	margin-top: 20px;
+}
+.main-content{
+	width: 200px;
+	height: 132px;
+	border: solid #ccc 1px;
+	margin-left: 40px;
+	margin-top: 10px;
+	text-align: center;
+	line-height: 132px;
+	cursor: pointer;
+	position: relative;
+}
+#main-input{
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 200px;
+	height: 132px;
+	z-index: 99;
+}
+.product-main-image{
+	position: absolute;
+	width: 200px;
+	height: 132px;
+	left: 0;
+	top: 0;
+	z-index: 100;
+}
+.del-product-main-image{
+	position: absolute;
+	width: 50px;
+	height: 25px;
+	right: 0;
+	top: 0;
+	z-index: 101;
+	line-height: 25px;
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	background: #14ACFC;
+}
+.main-detail-content{
+	margin-top: 20px;
+}
+.common-input{
+	height: 30px;
+	line-height: 30px;
+	text-indent: 5px;
 }

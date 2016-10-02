@@ -91,6 +91,8 @@ var config = {
 		}
 	},
 	path:"public/images/upload/",
-	uploadUrl:"http://139.196.13.206/shop/public/images/upload"
+	productPath:'public/images/product/',
+	uploadUrl:"http://139.196.13.206/shop/public/images/upload",
+	productUrl:"http://139.196.13.206/shop/public/images/product"
 };
 module.exports = config;

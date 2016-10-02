@@ -1,0 +1,55 @@
+extends indexCommon
+block sub-css
+	link(rel="stylesheet" type="text/css" href="/css/bootstrap-grid.min.css")
+	link(rel="stylesheet" type="text/css" href="/css/demo.css")
+	link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css")
+	link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/monokai-sublime.min.css")
+	link(href="/css/themes/quill.snow.css" rel="stylesheet")
+block sub_content
+	.news-title
+		span 新闻标题 ：
+		input.form-control.new-title-container#news-title 
+	div(style="width:100%;")
+		div#standalone-container
+			div#toolbar-container
+				span.ql-formats
+					select.ql-font
+					select.ql-size
+				span.ql-formats
+					button.ql-bold
+					button.ql-italic
+					button.ql-underline
+					button.ql-strike
+				span.ql-formats
+					select.ql-color
+					select.ql-background
+				span.ql-formats
+					button.ql-script(value="sub")
+					button.ql-script(value="super")
+				span.ql-formats
+					button.ql-header(value="1")
+					button.ql-header(value="2")
+					button.ql-blockquote
+					button.ql-code-block
+				span.ql-formats
+					button.ql-list(value="ordered")
+					button.ql-list(value="bullet")
+					button.ql-indent(value="-1")
+					button.ql-indent(value="+1")
+				span.ql-formats
+					button.ql-direction(value="rtl")
+					select.ql-align
+				span.ql-formats
+					button.ql-link
+					button.ql-image
+					button.ql-video
+					button.ql-formula
+				span.ql-formats
+					button.ql-clean
+			div#editor-container
+	.save-news#save-news 保存提交
+block sub-js
+	script(src="/dist/katex.min.js")
+	script(src="/dist/highlight.min.js")
+	script(src="/dist/quill.js")
+	script(src='/javascripts/admin_about.js')

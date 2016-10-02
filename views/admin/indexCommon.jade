@@ -1,9 +1,10 @@
 extends layoutCommon
 
+block sub-css
 block content
 	div.bg-box
 	div.title 南京安崇电子有限公司后台管理系统
-	div.container
+	div.containers
 		div.container-left
 			div.bar-logo
 				img(src="#{data.logoUrl}")
@@ -24,6 +25,5 @@ block content
 				block sub_content
 		div.clear-float
 block sub-js
-	script(src='/javascripts/admin_index.js')
 
 
