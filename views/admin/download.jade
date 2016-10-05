@@ -1,0 +1,17 @@
+extends indexCommon	
+
+block sub_content
+	.server-has-img 产品说明文档
+	.product-explain-document
+		span 产品说明文档分类 ：
+		select.form-control#download-type
+			option 标题一
+	#upload-container
+	.product-document-container
+		span.product-explain-select 选择文件
+			input.hidden#uploads(type='file')
+		span.product-explain-save#product-explain-save 提交
+	.server-has-img 产品手册
+
+block sub-js
+	script(src='/javascripts/admin_download.js')

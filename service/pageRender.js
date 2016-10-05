@@ -113,6 +113,25 @@ function checkSessionByAbout(req, res, next){
 	next(data);
 }
 
+function checkSessionByDownload(req, res, next){
+	if(!req.session.user){
+		res.redirect("/login");
+		return;
+	}
+	var data = {
+		logoUrl:"/images/logo.png",
+		this_position:"",
+		list:[
+			"首页广告图",
+			"产品中心",
+			"文档下载",
+			"技术支持",
+			"关于我们"
+		]
+	}
+	next(data);
+}
+
 function checkSessionByProductCenter(req, res, next){
 	if(!req.session.user){
 		res.redirect("/login");
@@ -206,5 +225,6 @@ module.exports = {
 	checkSession:checkSession,
 	checkSessionByAbout:checkSessionByAbout,
 	checkSessionByProductCenter:checkSessionByProductCenter,
-	checkSessionByAddProductClass:checkSessionByAddProductClass
+	checkSessionByAddProductClass:checkSessionByAddProductClass,
+	checkSessionByDownload:checkSessionByDownload
 }

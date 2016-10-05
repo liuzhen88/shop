@@ -14,7 +14,7 @@ $(function(){
 						window.location.href="/admin/productCenter";
 						break;
 					case 2:
-						window.location.href="/";
+						window.location.href="/admin/download";
 						break;
 					case 3:
 						window.location.href="/";

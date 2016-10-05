@@ -1108,3 +1108,54 @@ body{
 	line-height: 30px;
 	text-indent: 5px;
 }
+.product-explain-document{
+	text-align: center;
+}
+.product-explain-select{
+	position: relative;
+	display: inline-block;
+	width: 200px;
+	height: 30px;
+	border-radius: 4px;
+	line-height: 30px;
+	text-align: center;
+	z-index: 10;
+	margin-top: 40px;
+	background: #14ACFC;
+	color: #fff;	
+}
+.product-explain-save{
+	position: relative;
+	display: inline-block;
+	width: 200px;
+	height: 30px;
+	border-radius: 4px;
+	line-height: 30px;
+	text-align: center;
+	z-index: 10;
+	margin-top: 40px;
+	background: #14ACFC;
+	color: #fff;
+	margin-left: 20px;	
+	cursor: pointer;
+}
+.hidden{
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 200px;
+	height: 40px;
+	z-index: 100;
+}
+.product-document-container{
+	text-align: center;
+}
+#upload-container{
+	text-align: center;
+	margin-top: 40px;
+}
+.zip{
+	display: inline-block;
+	margin-left: 20px;
+}

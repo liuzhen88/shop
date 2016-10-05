@@ -97,6 +97,13 @@ router.get('/admin/addProductClass',function(req,res,next){
 	});
 });
 
+router.get('/admin/download',function(req,res,next){
+	pageRender.checkSessionByDownload(req,res,function(data){
+		data.this_position = '文档下载';
+		res.render('./admin/download',{data:data});
+	});
+});
+
 router.get("/modifyPassword",function(req,res,next){
 	pageRender.checkSession(req,res,function(data){
 		data.this_position = "修改密码";
