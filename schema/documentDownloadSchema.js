@@ -8,6 +8,6 @@ var documentSchema = new mongoose.Schema({
 	time:String
 });
 
-var documentModel = mongoose.model('documentdownload',documentSchema);
+var documentModel = mongoose.model('documentdownloads',documentSchema);
 
 module.exports = documentModel;

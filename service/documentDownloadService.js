@@ -55,7 +55,7 @@ function fsWritePromise(fileName, dataBuffer, fileSize, classType){
 					returnPromise.fileName = fileName;
 					returnPromise.fileSize = fileSize;
 					returnPromise.classType = classType;
-					returnPromise.filePath = newPath;
+					returnPromise.filePath = config.downloadPathUrl + "/" + fileName;
 					returnPromise.time = new Date().getTime();
 					deferred.resolve(returnPromise);
 				}

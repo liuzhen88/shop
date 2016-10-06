@@ -94,6 +94,7 @@ var config = {
 	downloadPath:'public/download/',
 	productPath:'public/images/product/',
 	uploadUrl:"http://139.196.13.206/shop/public/images/upload",
-	productUrl:"http://139.196.13.206/shop/public/images/product"
+	productUrl:"http://139.196.13.206/shop/public/images/product",
+	downloadPathUrl:'http://139.196.13.206/shop/public/download'
 };
 module.exports = config;
