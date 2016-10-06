@@ -308,7 +308,7 @@ body{
 .this-position-color{
 	color: #ff0000;
 }
-.password,#addNewProductClass{
+.password,#addNewProductClass,#addDownloadsClass{
 	width: 80%;
 	border:solid #e9eeef 1px;
 	height: 30px;

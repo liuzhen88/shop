@@ -97,6 +97,13 @@ router.get('/admin/addProductClass',function(req,res,next){
 	});
 });
 
+router.get('/admin/addDownloadClass',function(req,res,next){
+	pageRender.checkSessionByAddDownloadClass(req,res,function(data){
+		data.this_position="新增文档下载分类";
+		res.render('./admin/addDownloadClass', {data:data});
+	});
+});
+
 router.get('/admin/download',function(req,res,next){
 	pageRender.checkSessionByDownload(req,res,function(data){
 		data.this_position = '文档下载';

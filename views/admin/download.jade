@@ -5,7 +5,10 @@ block sub_content
 	.product-explain-document
 		span 产品说明文档分类 ：
 		select.form-control#download-type
-			option 标题一
+			- for(var i=0;i<data.classType.length;i++)
+				option #{data.classType[i]}
+		span(style='margin-left:10px;') 
+			a(href='/admin/addDownloadClass') 添加分类
 	#upload-container
 	.product-document-container
 		span.product-explain-select 选择文件

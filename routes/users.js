@@ -78,4 +78,12 @@ router.post('/savehandlebook',function(req,res){
 	});
 });
 
+router.post('/saveDownloadsClass',function(req,res){
+	documentDownloadService.saveDownloadsClass(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
 module.exports = router;

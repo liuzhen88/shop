@@ -7,6 +7,6 @@ var documentSchema = new mongoose.Schema({
 	time:String
 });
 
-var documentsModel = mongoose.model('productdocuments',documentSchema);
+var documentsModel = mongoose.model('handlebooks',documentSchema);
 
 module.exports = documentsModel;

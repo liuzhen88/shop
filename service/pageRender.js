@@ -3,6 +3,7 @@ var config = require('../config/config');
 var bannerModel = require("../schema/staicUploadImg");
 var newsSchema = require('../schema/newsSchema');
 var productCenterSchema = require('../schema/productCenterSchema');
+var documentDownloadSchema = require('../schema/documentDownloadSchema');
 
 function renderIndex(req, res){
 	var deferred = q.defer();
@@ -118,18 +119,21 @@ function checkSessionByDownload(req, res, next){
 		res.redirect("/login");
 		return;
 	}
-	var data = {
-		logoUrl:"/images/logo.png",
-		this_position:"",
-		list:[
-			"首页广告图",
-			"产品中心",
-			"文档下载",
-			"技术支持",
-			"关于我们"
-		]
-	}
-	next(data);
+	getExplainData(function(err,classTypes){
+		var data = {
+			logoUrl:"/images/logo.png",
+			this_position:"",
+			list:[
+				"首页广告图",
+				"产品中心",
+				"文档下载",
+				"技术支持",
+				"关于我们"
+			],
+			classType:classTypes
+		};
+		next(data);
+	});
 }
 
 function checkSessionByProductCenter(req, res, next){
@@ -159,6 +163,25 @@ function checkSessionByProductCenter(req, res, next){
 }
 
 function checkSessionByAddProductClass(req, res, next){
+	if(!req.session.user){
+		res.redirect("/login");
+		return;
+	}
+	var data = {
+		logoUrl:"/images/logo.png",
+		this_position:"",
+		list:[
+			"首页广告图",
+			"产品中心",
+			"文档下载",
+			"技术支持",
+			"关于我们"
+		]
+	}
+	next(data);
+}
+
+function checkSessionByAddDownloadClass(req, res, next){
 	if(!req.session.user){
 		res.redirect("/login");
 		return;
@@ -215,6 +238,20 @@ function getProductCenterData(callback){
 	});
 }
 
+function getExplainData(callback){
+	documentDownloadSchema.find({}).exec(function(err,docs){
+		if(err){
+			console.log(err);
+			callback(err);
+		}
+		var classType = [];
+		docs.forEach(function(value,index){
+			classType.push(value.classType);
+		});
+		callback('',classType);
+	});
+}
+
 module.exports = {
 	renderIndex:renderIndex,
 	renderProductCenter:renderProductCenter,
@@ -226,5 +263,6 @@ module.exports = {
 	checkSessionByAbout:checkSessionByAbout,
 	checkSessionByProductCenter:checkSessionByProductCenter,
 	checkSessionByAddProductClass:checkSessionByAddProductClass,
-	checkSessionByDownload:checkSessionByDownload
+	checkSessionByDownload:checkSessionByDownload,
+	checkSessionByAddDownloadClass:checkSessionByAddDownloadClass
 }
