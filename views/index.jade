@@ -56,26 +56,13 @@ html
         h2 产品分类
         p PRODUCT CATEGORY
       ul
-        li
-          a(href='')
-            p 电缆组件
-            img(src='images/index_producttosee.png', alt='')
-          img(src='images/index_product1.png', alt='')
-        li
-          a(href='')
-            p 同轴机械校准件
-            img(src='images/index_producttosee.png', alt='')
-          img(src='images/index_product2.png', alt='')
-        li
-          a(href='')
-            p NMD矢网端口转接器
-            img(src='images/index_producttosee.png', alt='')
-          img(src='images/index_product3.png', alt='')
-        li
-          a(href='')
-            p 测试附件
-            img(src='images/index_producttosee.png', alt='')
-          img(src='images/index_product4.png', alt='')
+        - for(var i=0;i<data.productCenter.length;i++)
+          li
+            a(href='')
+              p #{data.productCenter[i].productClass}
+              img(src='images/index_producttosee.png', alt='')
+            - if(data.productCenter[i].list.length>0)
+              img(width='270px' height='230px' src='#{data.productCenter[i].list[0].url}', alt='')
     .index_intro
       .index_intro1
         .intro_l
@@ -92,71 +79,23 @@ html
         p NEWS INFORMATION
       .setmiddle
         ul
-          li
-            .lefttime
-              h2
-                | 01
-              p
-                | 19号
-            .rightcontain
-              h2.title
-                b(title='新闻标题') 新闻标题
-                span 2016-08-16
-              p(title='大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级')
-                | 大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级
-              a(href='') 查看更多
-          li
-            .lefttime
-              h2
-                | 02
-              p
-                | 11号
-            .rightcontain
-              h2.title
-                b(title='新闻标题') 新闻标题
-                span 2016-08-16
-              p(title='大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级')
-                | 大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级
-              a(href='') 查看更多
-          li
-            .lefttime
-              h2
-                | 03
-              p
-                | 23号
-            .rightcontain
-              h2.title
-                b(title='新闻标题') 新闻标题
-                span 2016-08-16
-              p(title='大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级')
-                | 大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级
-              a(href='') 查看更多
-          li
-            .lefttime
-              h2
-                | 11
-              p
-                | 09号
-            .rightcontain
-              h2.title
-                b(title='新闻标题') 新闻标题
-                span 2016-08-16
-              p(title='大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级')
-                | 大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级
-              a(href='') 查看更多
-          li
-            .lefttime
-              h2
-                | 12
-              p
-                | 29号
-            .rightcontain
-              h2.title
-                b(title='新闻标题') 新闻标题
-                span 2016-08-16
-              p(title='大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级')
-                | 大撒时代凯撒喝酒大口洒家扩大艰苦撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒撒旦哈速度很快看见撒旦和卡萨丁的还好低级撒低级
-              a(href='') 查看更多
+          - for(var i=0;i<data.news.length;i++)
+            li
+              .lefttime
+                h2
+                  - if(i<9)
+                    | #{'0'+(Number(i)+1).toString()}
+                  - else
+                    | #{i}
+                p
+                  | #{data.news[i].time.split('-')[1]}号
+              .rightcontain
+                h2.title
+                  b(title='新闻标题') #{data.news[i].title}
+                  span #{data.news[i].time}
+                p(title='#{data.news[i].content}')
+                  | #{data.news[i].content}
+                a(href='') 查看更多
         a.seemore(href='') 查看更多
     .footer
       .footer-content

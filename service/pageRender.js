@@ -7,10 +7,73 @@ var documentDownloadSchema = require('../schema/documentDownloadSchema');
 
 function renderIndex(req, res){
 	var deferred = q.defer();
+	getBanner()
+	.then(function(data){
+		return getProductCenter(data)
+	})
+	.then(function(result){
+		return getNews(result);
+	})
+	.then(function(sendData){
+		sendData.title = config.index.title;
+		sendData.router = 'index';
+		console.log(sendData);
+		deferred.resolve(sendData);
+	})
+	.fail(function(err){
+		deferred.reject(err);
+	});
+	return deferred.promise;
+}
+
+//banner promise
+
+function getBanner(){
 	var context = {};
-	context.title = config.index.title;
-	context.router = 'index';
-	deferred.resolve(context);
+	var deferred = q.defer();
+	bannerModel.findOne({
+		'type':'banner'
+	}).exec(function(err,docs){
+		if(err){
+			console.log(err);
+			deferred.reject(err);
+		}else{
+			context.bannerData = docs;
+			deferred.resolve(context);
+		}
+	});
+
+	return deferred.promise;
+}
+
+function getProductCenter(data){
+	var deferred = q.defer();
+	productCenterSchema.find({}).exec(function(err,docs){
+		if(err){
+			console.log(err);
+			deferred.reject(err);
+		}else{
+			data.productCenter = docs;
+			deferred.resolve(data);
+		}
+	});
+
+	return deferred.promise;
+}
+
+function getNews(data){
+	var deferred = q.defer();
+	newsSchema.find({}).sort({
+		"timeStr":-1
+	}).exec(function(err,docs){
+		if(err){
+			console.log(err);
+			deferred.reject(err);
+		}else{
+			data.news = docs;
+			deferred.resolve(data);
+		}
+	});
 
 	return deferred.promise;
 }
