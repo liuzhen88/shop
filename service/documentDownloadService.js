@@ -41,7 +41,7 @@ function saveDownloadDocument(req, res){
 function fsWritePromise(fileName, dataBuffer, fileSize, classType){
 	var deferred = q.defer();
 	var returnPromise = {};
-	var newPath = config.uploadUrl + "/" + fileName;
+	var newPath = config.downloadPath + fileName;
 	fs.writeFile(fileName,dataBuffer,function(err){
 		if(err){
 			console.log(err);

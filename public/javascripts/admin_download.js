@@ -7,30 +7,25 @@ $(function(){
 		var file = e.target.files[0];
 		var fileSize = file.size;
 		var fileName = file.name;
-		var fileType = file.type.split("/")[1];
-		if(fileType){
-			alert("请上传压缩文件")
+		var typelz = file.type;
+		if(typelz && (typelz.indexOf('zip')<0 && typelz.indexOf('rar')<0)){
+			alert("请上传压缩文件");
 		}else{
-			var hz = fileName.split('.')[1];
-			if(hz!='zip' && hz!='rar'){
-				alert("请上传zip或rar压缩文件");
-			}else{
-				var reader = new FileReader();
-				reader.readAsDataURL(file);
-				reader.onload = function(e){
-					var source = this.result;
-					var obj = {
-						fileSize:fileSize,
-						fileName:fileName,
-						source:source
-					};
-					sendFile.push(obj);
-					var sub = "<span class='zip'>"
-							+	"<img src='/images/zip.png'>"
-							+	"<div>"+fileName+"</div>"	
-							+"</span>";
-					$("#upload-container").append(sub);
-				}
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function(e){
+				var source = this.result;
+				var obj = {
+					fileSize:fileSize,
+					fileName:fileName,
+					source:source
+				};
+				sendFile.push(obj);
+				var sub = "<span class='zip'>"
+						+	"<img src='/images/zip.png'>"
+						+	"<div>"+fileName+"</div>"	
+						+"</span>";
+				$("#upload-container").append(sub);
 			}
 		}
 	};
