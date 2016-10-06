@@ -17,7 +17,7 @@ $(function(){
 						window.location.href="/admin/download";
 						break;
 					case 3:
-						window.location.href="/";
+						window.location.href="/admin/support";
 						break;
 					case 4:
 						window.location.href="/admin/about";

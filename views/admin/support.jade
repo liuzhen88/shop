@@ -1,0 +1,12 @@
+extends indexCommon
+
+block sub_content
+	.server-has-img 技术文章
+	#support
+	.product-document-container
+		span.product-explain-select 选择文件
+			input.hidden#support-uploads(type='file')
+		span.product-explain-save#support-save 提交
+
+block sub-js
+	script(src='/javascripts/admin_support.js')

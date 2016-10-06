@@ -111,6 +111,13 @@ router.get('/admin/download',function(req,res,next){
 	});
 });
 
+router.get('/admin/support',function(req,res,next){
+	pageRender.checkSessionBySupport(req,res,function(data){
+		data.this_position = '技术支持';
+		res.render('./admin/support',{data:data});
+	});
+});
+
 router.get("/modifyPassword",function(req,res,next){
 	pageRender.checkSession(req,res,function(data){
 		data.this_position = "修改密码";

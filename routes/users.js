@@ -5,6 +5,7 @@ var upload = require("../service/upload");
 var newsService = require('../service/newsService');
 var productCenterService = require('../service/productCenterService');
 var documentDownloadService = require('../service/documentDownloadService');
+var supportService = require('../service/supportService');
 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -80,6 +81,14 @@ router.post('/savehandlebook',function(req,res){
 
 router.post('/saveDownloadsClass',function(req,res){
 	documentDownloadService.saveDownloadsClass(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
+router.post('/saveSupportArticle',function(req,res){
+	supportService.saveSupportArticle(req,res).then(function(data){
 		res.send(data);
 	}).fail(function(err){
 		res.send(err);

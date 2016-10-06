@@ -252,6 +252,25 @@ function getExplainData(callback){
 	});
 }
 
+function checkSessionBySupport(req, res, next){
+	if(!req.session.user){
+		res.redirect("/login");
+		return;
+	}
+	var data = {
+		logoUrl:"/images/logo.png",
+		this_position:"",
+		list:[
+			"首页广告图",
+			"产品中心",
+			"文档下载",
+			"技术支持",
+			"关于我们"
+		]
+	}
+	next(data);
+}
+
 module.exports = {
 	renderIndex:renderIndex,
 	renderProductCenter:renderProductCenter,
@@ -264,5 +283,6 @@ module.exports = {
 	checkSessionByProductCenter:checkSessionByProductCenter,
 	checkSessionByAddProductClass:checkSessionByAddProductClass,
 	checkSessionByDownload:checkSessionByDownload,
-	checkSessionByAddDownloadClass:checkSessionByAddDownloadClass
+	checkSessionByAddDownloadClass:checkSessionByAddDownloadClass,
+	checkSessionBySupport:checkSessionBySupport
 }
