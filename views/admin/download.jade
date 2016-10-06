@@ -12,6 +12,10 @@ block sub_content
 			input.hidden#uploads(type='file')
 		span.product-explain-save#product-explain-save 提交
 	.server-has-img 产品手册
-
+	#product-documents
+	.product-handlebook-container
+		span.product-handlebook-select 选择文件
+			input.hidden#handlebook-uploads(type='file')
+		span.product-explain-save#product-handlebook-save 提交
 block sub-js
 	script(src='/javascripts/admin_download.js')

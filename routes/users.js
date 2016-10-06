@@ -70,4 +70,12 @@ router.post('/saveDownloadDocument',function(req,res){
 	});
 });
 
+router.post('/savehandlebook',function(req,res){
+	documentDownloadService.savehandlebook(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
 module.exports = router;

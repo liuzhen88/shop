@@ -1111,7 +1111,7 @@ body{
 .product-explain-document{
 	text-align: center;
 }
-.product-explain-select{
+.product-explain-select,.product-handlebook-select{
 	position: relative;
 	display: inline-block;
 	width: 200px;
@@ -1148,7 +1148,7 @@ body{
 	height: 40px;
 	z-index: 100;
 }
-.product-document-container{
+.product-document-container,.product-handlebook-container{
 	text-align: center;
 }
 #upload-container{
@@ -1158,4 +1158,8 @@ body{
 .zip{
 	display: inline-block;
 	margin-left: 20px;
+}
+#product-documents{
+	text-align: center;
+	margin-top: 50px;
 }
