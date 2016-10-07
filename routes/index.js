@@ -58,6 +58,14 @@ router.get('/about',function(req, res, next){
 	});	
 });
 
+router.get('/newsDetail',function(req,res){
+	pageRender.renderNewsDetail(req,res).then(function(data){
+		res.render('./newsDetail',{data:data});
+	}).fail(function(err){
+		res.render("./newsDetail",{});
+	});
+});
+
 router.get("/login",function(req,res,next){
 	res.render("./admin/login",{});
 });

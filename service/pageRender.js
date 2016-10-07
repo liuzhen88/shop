@@ -334,6 +334,40 @@ function checkSessionBySupport(req, res, next){
 	next(data);
 }
 
+//news
+function renderNewsDetail(req, res){
+	var deferred = q.defer();
+	if(!req.session.user){
+		res.redirect("/login");
+		return;
+	}
+	var id = req.query.id;
+	newsSchema.findOne({
+		"_id":id
+	},function(err,docs){
+		if(err){
+			console.log(err);
+			deferred.reject(err);
+		}else{
+			var data = {
+				logoUrl:"/images/logo.png",
+				this_position:"",
+				list:[
+					"首页广告图",
+					"产品中心",
+					"文档下载",
+					"技术支持",
+					"关于我们"
+				],
+				news:docs
+			};
+			deferred.resolve(data);
+		}
+	});
+
+	return deferred.promise;
+}
+
 module.exports = {
 	renderIndex:renderIndex,
 	renderProductCenter:renderProductCenter,
@@ -347,5 +381,6 @@ module.exports = {
 	checkSessionByAddProductClass:checkSessionByAddProductClass,
 	checkSessionByDownload:checkSessionByDownload,
 	checkSessionByAddDownloadClass:checkSessionByAddDownloadClass,
-	checkSessionBySupport:checkSessionBySupport
+	checkSessionBySupport:checkSessionBySupport,
+	renderNewsDetail:renderNewsDetail
 }
