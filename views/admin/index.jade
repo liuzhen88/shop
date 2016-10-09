@@ -13,18 +13,18 @@ block sub_content
 	div.imgs-container
 		- if(data && data.bannerImageData && data.bannerImageData.banner)
 			- if(data.bannerImageData.banner.length>0)
-			- for(var i=0;i<data.bannerImageData.banner.length;i++)
-				div.lists-container
-					div.banner-conatiner-data
-						img.banner-data-url(src="#{data.bannerImageData.banner[i].bannerUrl}" data-id="#{data.bannerImageData.banner[i]._id}")
-					div.go-where
-						div.go-where-left
-							span 跳转链接 :
-							input.img-href.disable(type="text" placeholder="请输入跳转链接" readonly="readonly" value="#{data.bannerImageData.banner[i].href}")
-						div.go-right-actions
-							span.edit.common-style 编辑
-							span.save.common-style 保存
-							span.del.common-style 删除
+				- for(var i=0;i<data.bannerImageData.banner.length;i++)
+					div.lists-container
+						div.banner-conatiner-data
+							img.banner-data-url(src="#{data.bannerImageData.banner[i].bannerUrl}" data-id="#{data.bannerImageData.banner[i]._id}")
+						div.go-where
+							div.go-where-left
+								span 跳转链接 :
+								input.img-href.disable(type="text" placeholder="请输入跳转链接" readonly="readonly" value="#{data.bannerImageData.banner[i].href}")
+							div.go-right-actions
+								span.edit.common-style 编辑
+								span.save.common-style 保存
+								span.del.common-style 删除
 	div.loading
 		div.loading-gif
 			img(src="/images/load.gif")

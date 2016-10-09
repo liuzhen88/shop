@@ -7,6 +7,17 @@ block sub_content
 		span.product-explain-select 选择文件
 			input.hidden#support-uploads(type='file')
 		span.product-explain-save#support-save 提交
+	.server-has-img 产品命名规则
+	div.addImageContainer(style='margin-top:20px;')
+		div.addImage 新增广告图
+		input#upload(type="file")
+	div.preview-container
+		.preview-title 效果预览图	:
+		.preview-img-container
+		.upload-file#btn 确认上传
+	div.loading
+		div.loading-gif
+			img(src="/images/load.gif")
 
 block sub-js
 	script(src='/javascripts/admin_support.js')

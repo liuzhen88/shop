@@ -95,4 +95,12 @@ router.post('/saveSupportArticle',function(req,res){
 	});
 });
 
+router.post('/loadProductNamerule',function(req,res){
+	supportService.loadProductNamerule(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
 module.exports = router;
