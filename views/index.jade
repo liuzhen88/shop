@@ -44,9 +44,9 @@ html
               img(src='images/index_icon7.png', alt='')
               p 网上商城
       .b-img
-        a(href='#', style='background:url(images/index_banner1.png) center no-repeat;')
-        a(href='#', style='background:url(images/index_banner1.png) center no-repeat;')
-        a(href='#', style='background:url(images/index_banner1.png) center no-repeat;')
+        - if(data.bannerData.banner.length>0)
+          - for(var i=0;i<data.bannerData.banner.length;i++)
+            a(href='#', style='background:url(#{data.bannerData.banner[i].bannerUrl}) center no-repeat;background-size:100% 100%')
       a.bar-left(href='#')
         em
       a.bar-right(href='#')
@@ -94,7 +94,7 @@ html
                   b(title='新闻标题') #{data.news[i].title}
                   span #{data.news[i].time}
                 p(title='#{data.news[i].content}')
-                  | #{data.news[i].content}
+                  | !{data.news[i].content}
                 a(href='') 查看更多
         a.seemore(href='') 查看更多
     .footer

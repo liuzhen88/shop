@@ -119,7 +119,27 @@ function saveNewProductClass(req, res){
 	return deferred.promise;
 }
 
+function getProductClassDataById(req, res){
+	var deferred = q.defer();
+	var id = req.query.id;
+	productCenterSchema.findOne({
+		"_id":id
+	},function(err,docs){
+		if(err){
+			console.log(err);
+			deferred.reject(err);
+		}else{
+			var context = config.data.success;
+			context.data = docs;
+			deferred.resolve(context);
+		}
+	});
+
+	return deferred.promise;
+}
+
 module.exports = {
 	saveProductData:saveProductData,
-	saveNewProductClass:saveNewProductClass
+	saveNewProductClass:saveNewProductClass,
+	getProductClassDataById:getProductClassDataById
 }

@@ -64,15 +64,9 @@ block content
       section.buttons
         .container
           div
-            a.btn.btn-4(href='#')
-              span 连接器端口种类和区分
-            a.btn.btn-4(href='#')
-              span 同轴产品常用微波公式
-            a.btn.btn-4(href='#')
-              span 电缆组件稳幅稳相常用测试方法
-            a.btn.btn-4(href='#')
-              span 矢量网络分析仪校准原理
-            a.btn.btn-4(href='#')
-              span 驻波和回波损耗转换表
+            - if(data.supportData.length>0)
+              - for(var i=0;i<data.supportData.length;i++)
+                a.btn.btn-4(href='#{data.supportData[i].filePath}')
+                  span #{data.supportData[i].fileName}
 block sub-js
   script(src='/javascripts/support.js')

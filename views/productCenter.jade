@@ -10,48 +10,36 @@ block content
         p PRODUCTS CENTER
     .productall
         ul.navs
-          li.lisa 电缆组件
-          li 同轴机械校准件
-          li NMD矢网端口转接器
-          li 测试附件
+          - for(var i=0;i<data.data.length;i++)
+            - if(i == 0)
+              li.lisa(data-id='#{data.data[i]._id}') #{data.data[i].productClass}
+            - else
+              li(data-id='#{data.data[i]._id}') #{data.data[i].productClass}
         .setproduct
-          ul
-            li.checked
-              img(src='/images/product_img1.JPG', alt='')
-              p 高性能稳幅稳相VNA测试电缆组件
-            li
-              img(src='/images/product_img2.jpg', alt='')
-              p 高性能稳幅稳相VNA测试电缆组件1
-            li
-              img(src='/images/product_img3.jpg', alt='')
-              p 高性能稳幅稳相VNA测试电缆组件2
-            li
-              img(src='/images/product_img4.jpg', alt='')
-              p 高性能稳幅稳相VNA测试电缆组件3
-            li
-              img(src='/images/product_img5.jpg', alt='')
-              p 高性能稳幅稳相VNA测试电缆组件4
-            li
-              img(src='/images/product_img6.jpg', alt='')
-              p 高性能稳幅稳相VNA测试电缆组件5
-            li
-              img(src='/images/product_img7.jpg', alt='')
-              p 高性能稳幅稳相VNA测试电缆组件6
-            li
-              img(src='/images/product_img8.jpg', alt='')
-              p 高性能稳幅稳相VNA测试电缆组件7
+          ul#productClassList
+            - if(data.data.length>0)
+              - for(var j=0;j<data.data[0].list.length;j++)
+                - if(j == 0)
+                  li.product-class-list.checked(data-id='#{data.data[0].list[j]._id}' data-result='#{JSON.stringify(data.data[0].list[j])}')
+                    img(src='#{data.data[0].list[j].url}', alt='')
+                    p #{data.data[0].list[j].title}
+                    img.checkedimg(src='/images/checked.png')
+                - else
+                  li.product-class-list(data-id='#{data.data[0].list[j]._id}' data-result='#{JSON.stringify(data.data[0].list[j])}')
+                    img(src='#{data.data[0].list[j].url}', alt='')
+                    p #{data.data[0].list[j].title}
     .producttitle
-      img(src='/images/tecno_icon2.png', alt='')
-      p 高性能稳幅稳相VNA测试电缆组件
+      img#selectedImage(src='/images/tecno_icon2.png', alt='')
+      - if(data.data.length>0)
+        p#selectedTitle #{data.data[0].list[0].title}
     .productmore
       .leftproduct
-        img(src='/images/product_img1.JPG', alt='')
-        p 高性能稳幅稳相VNA测试电缆组件
+        - if(data.data.length>0)
+          img#checkedClassImage(src='#{data.data[0].list[0].url}', alt='')
+          p#checkedClassTitle #{data.data[0].list[0].title}
       .rightproduct
-        p
-          | 安崇电子提供的NAC系列高性能稳幅稳相测试电缆组件，主要用于配合矢量网络分析仪(VNA)的测试应用，采用了专利技术设计并经过特殊的工艺处理，可满足实验室、生产线、测试系统等条件下微波电参数的精密测量。其主要特点是:在DC~67GHz范围内具有极为稳定的电压驻波比及插入损耗；拥有极其优异的机械相位稳定性和连接重复性，端口采用NMD连接器，具有坚固轻巧的机械结构，可承受弯曲、挤压、扭曲、拉伸等外力并保持可靠性能。
-        .imggroup
-          img(src='/images/product/images.png', alt='')
+        - if(data.data.length>0)
+          .cont#checkedClassContent !{data.data[0].list[0].content}
         input(type='button', value='下载pdf')
 block sub-js
   script(src='/javascripts/product_center.js')

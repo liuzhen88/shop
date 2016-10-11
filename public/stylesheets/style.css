@@ -344,6 +344,9 @@ dd{
 .downlod-files{
 	padding: 0px 60px;
 }
+.file-list{
+	margin-bottom: 20px;
+}
 .file-list span{
 	color:#0b0b0b;
 	font-size: 17px;

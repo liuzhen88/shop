@@ -12,26 +12,14 @@ block content
 	.cont-container
 		.product-document
 			ul
-				li.document-list.border-right
-					.document-list-title 标题一
-					.document-list-content 
-						- for(var i=0;i<data.list.length;i++)
-							p #{data.list[i].name} 
-				li.document-list.border-right
-					.document-list-title 标题二
-					.document-list-content
-						- for(var i=0;i<data.list.length;i++)
-							p #{data.list[i].name} 
-				li.document-list.border-right
-					.document-list-title 标题三
-					.document-list-content
-						- for(var i=0;i<data.list.length;i++)
-							p #{data.list[i].name} 
-				li.document-list
-					.document-list-title 标题四
-					.document-list-content
-						- for(var i=0;i<data.list.length;i++)
-							p #{data.list[i].name} 
+				- if(data.explainDocuments.length>0)
+					- for(var i=0;i<data.explainDocuments.length;i++)
+						li.document-list.border-right
+							.document-list-title #{data.explainDocuments[i].classType}
+							.document-list-content 
+								- for(var j=0;j<data.explainDocuments[i].data.length;j++)
+									p 
+										a(style='color:#000' href="#{data.explainDocuments[i].data[j].filePath}") #{data.explainDocuments[i].data[j].fileName} 
 	.null-border-bottom
 	.download-containers
 		.download-container
@@ -40,8 +28,10 @@ block content
 			.line
 				img(src='/images/index_underline1.png')
 		.downlod-files
-			.file-list
-				span 钢铁是怎样炼成的_10M.pdf
-				a(href="#") 下载
+			- if(data.handleBooks.length>0)
+				- for(var ii=0;ii<data.handleBooks.length;ii++)
+					.file-list
+						span #{data.handleBooks[ii].fileName}
+						a(href="#{data.handleBooks[ii].filePath}") 下载
 block sub-js
 	script(src='/javascripts/download.js')

@@ -4,6 +4,8 @@ var bannerModel = require("../schema/staicUploadImg");
 var newsSchema = require('../schema/newsSchema');
 var productCenterSchema = require('../schema/productCenterSchema');
 var documentDownloadSchema = require('../schema/documentDownloadSchema');
+var handleBookSchema = require("../schema/documentsSchema");
+var supportSchema = require('../schema/supportSchema');
 
 function renderIndex(req, res){
 	var deferred = q.defer();
@@ -17,7 +19,6 @@ function renderIndex(req, res){
 	.then(function(sendData){
 		sendData.title = config.index.title;
 		sendData.router = 'index';
-		console.log(sendData);
 		deferred.resolve(sendData);
 	})
 	.fail(function(err){
@@ -78,12 +79,31 @@ function getNews(data){
 	return deferred.promise;
 }
 
+function getProducts(req, res){
+	var deferred = q.defer();
+	productCenterSchema.find({}).exec(function(err,docs){
+		if(err){
+			deferred.reject(err);
+		}else{
+			deferred.resolve(docs);
+		}
+	});
+
+	return deferred.promise;
+}
+
 function renderProductCenter(req, res){
 	var deferred = q.defer();
-	var context = {};
-	context.title = config.productCenter.title;
-	context.router = 'productCenter';
-	deferred.resolve(context);
+	getProducts(req,res).then(function(datas){
+		var context = {};
+		context.title = config.productCenter.title;
+		context.router = 'productCenter';
+		context.data = datas;
+		console.log(context);
+		deferred.resolve(context);
+	}).fail(function(err){
+		deferred.reject(err);
+	});
 
 	return deferred.promise;
 }
@@ -92,22 +112,61 @@ function renderDownload(req, res){
 	var deferred = q.defer();
 	var context = {};
 	var list = config.list;
-	context.title = config.download.title;
-	context.router = 'download';
-	context.list = list;
-	deferred.resolve(context);
+	downloadNeedData(function(err,explainDocuments,handleBooks){
+		context.title = config.download.title;
+		context.router = 'download';
+		context.list = list;
+		context.explainDocuments = explainDocuments;
+		context.handleBooks = handleBooks;
+		console.log(context);
+		deferred.resolve(context);
+	});
 
 	return deferred.promise;
 }
 
+function downloadNeedData(callback){
+	documentDownloadSchema.find({}).exec(function(err,explain){
+		if(err){
+			console.log(err);
+			callback(err);
+		}else{
+			handleBookSchema.find({}).exec(function(err,handle){
+				if(err){
+					console.log(err);
+					callback(err);
+				}
+				callback('',explain,handle);
+			});
+		}
+	});
+}
+
 function renderSupport(req, res){
 	var deferred = q.defer();
-	var context = {};
-	context.title = config.support.title;
-	context.router = 'support';
-	deferred.resolve(context);
+	getsupportSchemaData(function(err,data){
+		var context = {};
+		context.title = config.support.title;
+		context.router = 'support';
+		context.supportData = data;
+		console.log(context);
+		deferred.resolve(context);
+	});
 
 	return deferred.promise;
+}
+
+function getsupportSchemaData(callback){
+	supportSchema.find({
+		"name":"technical_support_article"
+	}).exec(function(err,docs){
+		if(err){
+			console.log(err);
+			callback(err);
+		}else{
+			callback('',docs);
+		}
+	});
 }
 
 function renderContact(req, res){

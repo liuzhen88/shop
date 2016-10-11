@@ -103,4 +103,12 @@ router.post('/loadProductNamerule',function(req,res){
 	});
 });
 
+router.get('/getProductClassDataById',function(req, res){
+	productCenterService.getProductClassDataById(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
 module.exports = router;
