@@ -2,6 +2,8 @@ var q = require('q');
 var newsSchema = require('../schema/newsSchema');
 var config = require('../config/config');
 
+var limitNum = 14;
+
 function saveNews(req, res){
 	var deferred = q.defer();
 	var title = req.body.title;
@@ -53,6 +55,28 @@ function get_time(this_time){
 	return aa;
 }
 
+function getPageData(req, res){
+	var deferred = q.defer();
+	var page = req.query.page;
+	page = Number(page) - 1;
+	var skips = page * limitNum;
+	newsSchema.find({}).sort({
+		"timeStr":-1
+	}).skip(skips).limit(limitNum).exec(function(err,docs){
+		if(err){
+			console.log(err);
+			deferred.reject(err);
+		}else{
+			var context = config.data.success;
+			context.data = docs;
+			deferred.resolve(context);
+		}
+	});
+
+	return deferred.promise;
+}
+
 module.exports = {
-	saveNews:saveNews
+	saveNews:saveNews,
+	getPageData:getPageData
 }

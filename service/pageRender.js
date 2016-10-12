@@ -6,6 +6,9 @@ var productCenterSchema = require('../schema/productCenterSchema');
 var documentDownloadSchema = require('../schema/documentDownloadSchema');
 var handleBookSchema = require("../schema/documentsSchema");
 var supportSchema = require('../schema/supportSchema');
+var rule = require('../schema/productNameRuleSchema');
+
+var limitNum = 14;
 
 function renderIndex(req, res){
 	var deferred = q.defer();
@@ -144,11 +147,12 @@ function downloadNeedData(callback){
 
 function renderSupport(req, res){
 	var deferred = q.defer();
-	getsupportSchemaData(function(err,data){
+	getsupportSchemaData(function(err,data,ruleData){
 		var context = {};
 		context.title = config.support.title;
 		context.router = 'support';
 		context.supportData = data;
+		context.rules = ruleData;
 		console.log(context);
 		deferred.resolve(context);
 	});
@@ -164,7 +168,17 @@ function getsupportSchemaData(callback){
 			console.log(err);
 			callback(err);
 		}else{
-			callback('',docs);
+			rule.find({
+				"name":"product_name_rule"
+			}).exec(function(err,ruleData){
+				if(err){
+					console.log(err);
+					callback(err);
+				}else{
+					callback('',docs,ruleData);
+				}
+			});
+			
 		}
 	});
 }
@@ -184,11 +198,14 @@ function renderAbout(req, res){
 	var context = {};
 	context.title = config.support.title;
 	context.router = 'about';
-	getNewsData(function(err,docs){
+	getNewsData(function(err,docs,lens){
 		if(err){
 			deferred.reject(err);
 		}else{
 			context.data = docs;
+			var len = Math.ceil(lens/limitNum)
+			context.total = len;
+			console.log(context);
 			deferred.resolve(context);
 		}
 	});
@@ -337,13 +354,20 @@ function getBannerData(cb){
 function getNewsData(callback){
 	newsSchema.find({}).sort({
 		"timeStr":-1
-	}).exec(function(err,docs){
+	}).limit(limitNum).exec(function(err,docs){
 		if(err){
 			console.log(err);
 			callback(err);
 			return;
 		}
-		callback('',docs);
+		newsSchema.find({}).exec(function(err,result){
+			if(err){
+				console.log(err);
+				callback(err);
+				return;
+			}
+			callback('',docs,result.length);
+		})
 	});
 }
 
@@ -396,10 +420,6 @@ function checkSessionBySupport(req, res, next){
 //news
 function renderNewsDetail(req, res){
 	var deferred = q.defer();
-	if(!req.session.user){
-		res.redirect("/login");
-		return;
-	}
 	var id = req.query.id;
 	newsSchema.findOne({
 		"_id":id
@@ -420,6 +440,7 @@ function renderNewsDetail(req, res){
 				],
 				news:docs
 			};
+			console.log(data);
 			deferred.resolve(data);
 		}
 	});

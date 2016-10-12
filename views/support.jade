@@ -10,26 +10,13 @@ block content
         h2 产品命名规则
         p PRODUCT CATEGORY
       ul.namefor
-        li
-          img(src='images/index_product1.png', alt='')
-          div
-            h2 通用规则
-            p 点击查看
-        li
-          img(src='images/index_product2.png', alt='')
-          div
-            h2 通用规则
-            p 点击查看
-        li
-          img(src='images/index_product3.png', alt='')
-          div
-            h2 通用规则
-            p 点击查看
-        li
-          img(src='images/index_product4.png', alt='')
-          div
-            h2 通用规则
-            p 点击查看
+        - if(data.rules.length>0)
+          - for(var i=0;i<data.rules.length;i++)
+            li
+              img(src='#{data.rules[i].filePath}', alt='')
+              div
+                h2 通用规则
+                p 点击查看
     .overwhach
       img(src='images/shutdown.png', alt='')
       img(src='images/index_product1.png', alt='')

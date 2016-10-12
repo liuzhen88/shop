@@ -11,4 +11,8 @@ html
 				p NEWS DETAIL
 			.newsmain
 				.title
-					b(title="山地车的日常维护和保养") 山地车的日常维护和保养)
+					b(title="#{data.news.title}") #{data.news.title}
+					label 发布时间：#{data.news.time}
+				.newsdetail
+					h2	#{data.news.title}
+					p !{data.news.content}

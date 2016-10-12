@@ -111,4 +111,12 @@ router.get('/getProductClassDataById',function(req, res){
 	});
 });
 
+router.get("/getPageData",function(req,res){
+	newsService.getPageData(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
 module.exports = router;

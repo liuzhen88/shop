@@ -52,20 +52,19 @@ block content
 			.line
 				img(src='/images/index_underline2.png')
 		.company-new-content
-			ul
-				li(style='margin-right:80px;')
-					- for(var i=0;i<7;i++)
-						p.news
-							a 公司新闻新闻新闻测试数据测试数据
-							span.news-time 2016-09-16
-				li
-					- for(var i=0;i<7;i++)
-						p.news
-							a 公司新闻新闻新闻测试数据测试数据
-							span.news-time 2016-09-16
+			ul#news-container(data-total="#{data.total}")
+				- if(data.data.length>0)
+					- for(var i=0;i<data.data.length;i++)
+						- if(i%2 != 0)
+							li.news(data-id="#{data.data[i]._id}")
+								a #{data.data[i].title}
+								span.news-time #{data.data[i].time}
+						- else
+							li.news.mf(data-id="#{data.data[i]._id}")
+								a #{data.data[i].title}
+								span.news-time #{data.data[i].time}
 	.new-page-container
-		a.prev 上一页
-		a.page 1
-		a.next 下一页
+		a.prev.not-click#prev 上一页
+		a.next#next 下一页
 block sub-js
 	script(src='/javascripts/about.js')
