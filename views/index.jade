@@ -46,7 +46,7 @@ html
       .b-img
         - if(data.bannerData.banner.length>0)
           - for(var i=0;i<data.bannerData.banner.length;i++)
-            a(href='#', style='background:url(#{data.bannerData.banner[i].bannerUrl}) center no-repeat;background-size:100% 100%')
+            a(href='#', style='background:url(#{data.bannerData.banner[i].bannerUrl}) center no-repeat;')
       a.bar-left(href='#')
         em
       a.bar-right(href='#')
