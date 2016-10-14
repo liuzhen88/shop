@@ -284,6 +284,7 @@ dd{
 	width: 1200px;
 	margin: 0 auto;
 	padding-bottom: 80px;
+	overflow: hidden;
 }
 .product-document{
 	width: 100%;
@@ -299,6 +300,7 @@ dd{
 	min-height: 200px;
 	height: auto;
 	padding: 0px 60px 0px 60px;
+	margin-bottom: 20px;
 }
 .border-right{
 	border-right: dashed #dcdcdc 1px;
@@ -739,3 +741,50 @@ dd{
 	color: #0b0b0b;
 	margin-top: 15px
 }
+.setmaps{
+			width:1200px;
+			height:455px;
+			overflow:hidden;
+			border: solid #ccc 5px;
+			position: relative;
+			margin:0 auto;
+			margin-top: 50px;}
+		#iControlbox{
+			position:absolute;
+			right:20px;
+			top:60px;
+			z-index:2;
+			}		
+        #tip {
+            background-color: #ddf;
+            color: #333;
+            border: 1px solid silver;
+            box-shadow: 3px 4px 3px 0px silver;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            line-height: 20px;
+			z-index:100;
+        }
+        #tip input[type="text"] {
+            height: 25px;
+            border: 0;
+            padding-left: 5px;
+            width: 180px;
+            border-radius: 3px;
+            outline: none;
+        }
+		 #tip input[type="button"] {
+			 border:none;
+        }
+        #panel {
+            position:absolute;
+            background-color: white;
+            max-height: 90%;
+            overflow-y: auto;
+            top: 50px;
+            right: 10px;
+            width: 280px;
+        }

@@ -510,7 +510,7 @@ q:before, q:after {
 	clear:both;
 	padding-left: 46px;
 	width: 882px;
-	margin-top: 10px;
+	margin-top: 5px;
 	color: #909090;
 	font-size: 12px;
 	text-overflow: ellipsis;
@@ -554,7 +554,6 @@ q:before, q:after {
 /*-----------------------------------tecnolg----------------------------------------*/
 .setnames{
 	width:100%;
-	height:410px;
 	position:relative;
 	overflow:hidden;
 	}
@@ -567,7 +566,7 @@ q:before, q:after {
 	position:absolute;
 	width:100%;
 	height:100%;
-	top:0px;
+	top:-700px;
 	background-color:rgba(0,0,0,0.6);
 	z-index:9999999999999;
 	}
@@ -606,7 +605,8 @@ q:before, q:after {
 	-ms-transition:all 0.3s;
 	-o-transition:all 0.3s;
 	-webkit-transition:all 0.3s;
-	position:relative;}	
+	position:relative;
+	margin-bottom:40px;}	
 .name ul.namefor li>img{
 	width:100%;
 	height:100%;
@@ -709,12 +709,17 @@ q:before, q:after {
 	height:42px;
 	line-height:42px;
 	background:url(../images/tecno_icon1.png)  no-repeat left center;
-	padding-left:22px}
+	padding-left:22px;
+	font-size:16px !important;
+	font-weight:normal !important;
+	border:none !important;}
 .diy-main dl dt.diy-down{
 	background-image:url(../images/tecno_icon2.png) !important;
 	}
 .diy-main dl dd p{
 	line-height:30px;
+	font-size:14px;
+	font-weight: lighter;
 	}
 
 .download{
@@ -799,7 +804,10 @@ q:before, q:after {
 	height:60px;}	
 .products .productall ul.navs li{
 	float:left;
-	width:190px;
+	width:130px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
 	text-align:center;
 	background-color:#e3e3e3;
 	height:44px;
@@ -825,7 +833,9 @@ q:before, q:after {
 	-o-transition:all 0.6s;
 	-webkit-transition:all 0.6s;
 	}
-	
+.products .productall ul.navs li:last-child{
+	margin-right:0px !important;
+}	
 	
 	
 .products .productall .setproduct{
@@ -910,12 +920,17 @@ q:before, q:after {
 	width:730px;
 	float:right;
 	height:100%;
+	overflow:hidden;
 	}
 .products .productmore .rightproduct p{
 	text-indent:28px;
 	font-size:14px;
 	font-weight:lighter;
 	line-height:24px;
+	}
+.products .productmore .rightproduct p img{
+	width:100%;
+	margin-top:14px;
 	}
 .products .productmore .rightproduct .imggroup{
 	margin-top:20px;

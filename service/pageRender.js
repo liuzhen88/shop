@@ -74,7 +74,16 @@ function getNews(data){
 			console.log(err);
 			deferred.reject(err);
 		}else{
-			data.news = docs;
+			if(docs.length>5){
+				var arr = [];
+				for(var i=0;i<5;i++){
+					arr.push(docs[i]);
+				}
+				data.news = arr;
+			}else{
+				data.news = docs;
+			}
+			//data.news = docs;
 			deferred.resolve(data);
 		}
 	});

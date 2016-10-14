@@ -12,9 +12,9 @@ block content
         ul.navs
           - for(var i=0;i<data.data.length;i++)
             - if(i == 0)
-              li.lisa(data-id='#{data.data[i]._id}') #{data.data[i].productClass}
+              li.lisa(data-id='#{data.data[i]._id}' title='#{data.data[i].productClass}') #{data.data[i].productClass}
             - else
-              li(data-id='#{data.data[i]._id}') #{data.data[i].productClass}
+              li(data-id='#{data.data[i]._id}' title='#{data.data[i].productClass}') #{data.data[i].productClass}
         .setproduct
           ul#productClassList
             - if(data.data.length>0)

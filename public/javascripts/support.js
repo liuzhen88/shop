@@ -7,7 +7,7 @@ $(document).ready(function(e) {
 		$(this).toggleClass("diy-down");
 		});
 		
-	$(".overwhach").css({top:-600});
+	$(".overwhach").css({top:-3000});
 	$(".name ul.namefor li").click(function(){
 		$(".overwhach").animate({top:0},800);
 		var url = $(this).find("img").attr("src");
