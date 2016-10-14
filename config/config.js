@@ -95,6 +95,7 @@ var config = {
 	productPath:'public/images/product/',
 	uploadUrl:"http://139.196.13.206/shop/public/images/upload",
 	productUrl:"http://139.196.13.206/shop/public/images/product",
-	downloadPathUrl:'http://139.196.13.206/shop/public/download'
+	downloadPathUrl:'http://139.196.13.206/shop/public/download',
+	delUploadPath:"./public/images/upload/",
 };
 module.exports = config;

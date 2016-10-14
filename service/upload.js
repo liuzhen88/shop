@@ -31,6 +31,7 @@ function uploadSource(imgData, fileType, fileName, Href, req, callback){
     		bannerUrl:config.uploadUrl+"/"+lastFileName,
     		name:name,
     		href:href,
+    		oldName:lastFileName,
     		operator:req.session.user.username
     	}
     	bannerArray.push(bannerObj);
@@ -175,8 +176,9 @@ function deleteBannerFileByUrl(req, res){
 		var bannerDataArray = result.banner;
 		bannerDataArray.forEach(function(value,index){
 			if(value._id == dataId){
+				var delPath = config.delUploadPath + value.oldName;
 				deleteBannerDataByIndex(bannerDataArray,index).then(function(data){
-					fs.unlink(path,function(){
+					fs.unlink(delPath,function(){
 						deferred.resolve(data);
 					});	
 				}).fail(function(err){	
