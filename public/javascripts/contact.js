@@ -1,4 +1,4 @@
-$(function(){
+
 	//基本地图加载
 	var windowsArr = [];
     var marker = [];
@@ -23,19 +23,19 @@ $(function(){
          placeSearch.search(e.poi.name);
       });
     });
-	function show(obj){
-	map.clearMap();
-	var text = $(obj).parent("#tip").find(".input").val();
-    AMap.service(["AMap.Driving"], function() {
-        var driving = new AMap.Driving({
-            map: map,
-            panel: "panel"
-        }); //构造路线导航类
-        // 根据起终点坐标规划步行路线
-        driving.search([
-            {keyword: text},
-            {keyword: '苏州站'}
-        ]);
-    });
-	}
-});
+
+function show(obj){
+    map.clearMap();
+    var text = $(obj).parent("#tip").find(".input").val();
+      AMap.service(["AMap.Driving"], function() {
+          var driving = new AMap.Driving({
+              map: map,
+              panel: "panel"
+          }); //构造路线导航类
+          // 根据起终点坐标规划步行路线
+          driving.search([
+              {keyword: text},
+              {keyword: '苏州站'}
+          ]);
+      });
+  }

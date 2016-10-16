@@ -195,7 +195,7 @@ function getsupportSchemaData(callback){
 function renderContact(req, res){
 	var deferred = q.defer();
 	var context = {};
-	context.title = config.support.title;
+	context.title = config.contact.title;
 	context.router = 'contact';
 	deferred.resolve(context);
 
@@ -205,7 +205,7 @@ function renderContact(req, res){
 function renderAbout(req, res){
 	var deferred = q.defer();
 	var context = {};
-	context.title = config.support.title;
+	context.title = config.about.title;
 	context.router = 'about';
 	getNewsData(function(err,docs,lens){
 		if(err){

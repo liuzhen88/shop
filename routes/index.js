@@ -20,6 +20,7 @@ router.get('/index',function(req, res, next){
 
 router.get('/productCenter',function(req, res, next){
 	pageRender.renderProductCenter(req,res).then(function(data){
+		data.bg = '/images/product_bg.png';
 		res.render('./productCenter',{data:data});
 	}).fail(function(err){
 		res.render('./productCenter',{});
@@ -28,6 +29,7 @@ router.get('/productCenter',function(req, res, next){
 
 router.get('/download',function(req, res, next){
 	pageRender.renderDownload(req,res).then(function(data){
+		data.bg = '/images/download_bg.png';
 		res.render('./download',{data:data});
 	}).fail(function(err){
 		res.render('./download',{});
@@ -36,6 +38,7 @@ router.get('/download',function(req, res, next){
 
 router.get('/support',function(req, res, next){
 	pageRender.renderSupport(req,res).then(function(data){
+		data.bg = '/images/support_bg.png';
 		res.render('./support',{data:data});
 	}).fail(function(err){
 		res.render('./support',{});
@@ -44,6 +47,7 @@ router.get('/support',function(req, res, next){
 
 router.get('/contact',function(req, res, next){
 	pageRender.renderContact(req,res).then(function(data){
+		data.bg = '/images/contact_bg.png';
 		res.render('./contact',{data:data});
 	}).fail(function(err){
 		res.render('./contact',{});
@@ -52,6 +56,7 @@ router.get('/contact',function(req, res, next){
 
 router.get('/about',function(req, res, next){
 	pageRender.renderAbout(req,res).then(function(data){
+		data.bg = '/images/about_bg.png';
 		res.render('./about',{data:data});
 	}).fail(function(err){
 		res.render('./about',{});
@@ -60,6 +65,8 @@ router.get('/about',function(req, res, next){
 
 router.get('/newsDetail',function(req,res){
 	pageRender.renderNewsDetail(req,res).then(function(data){
+		data.bg = '/images/detail_bg.png';
+		console.log(data);
 		res.render('./newsDetail',{data:data});
 	}).fail(function(err){
 		res.render("./newsDetail",{});
