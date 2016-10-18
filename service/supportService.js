@@ -13,7 +13,7 @@ function saveSupportArticle(req, res){
 		var fileName = value.fileName;
 		var fileSize = value.fileSize;
 		var source = value.source;
-		var base64Data = source.replace(/^data:\/\w+;base64,/, "");	
+		var base64Data = source.replace(/^data:;base64,/, "");	
 		var dataBuffer = new Buffer(base64Data, 'base64');
 		promiseArr.push(writeFiles(fileName,dataBuffer,fileSize));
 	});

@@ -25,7 +25,7 @@ function saveDownloadDocument(req, res){
 					var fileName = value.fileName;
 					var fileSize = value.fileSize;
 					var source = value.source;
-					var base64Data = source.replace(/^data:\/\w+;base64,/, "");	
+					var base64Data = source.replace(/^data:;base64,/, "");	
 					var dataBuffer = new Buffer(base64Data, 'base64');
 					promiseArray.push(fsWritePromise(fileName,dataBuffer,fileSize,classType));	
 				});
@@ -53,7 +53,7 @@ function saveDownloadDocument(req, res){
 					var fileName = value.fileName;
 					var fileSize = value.fileSize;
 					var source = value.source;
-					var base64Data = source.replace(/^data:\/\w+;base64,/, "");	
+					var base64Data = source.replace(/^data:;base64,/, "");	
 					var dataBuffer = new Buffer(base64Data, 'base64');
 					updatePromise.push(fsUptatePromise(fileName,dataBuffer,fileSize,classType));	
 				});
@@ -196,7 +196,7 @@ function savehandlebook(req, res){
 		var fileName = value.fileName;
 		var fileSize = value.fileSize;
 		var source = value.source;
-		var base64Data = source.replace(/^data:\/\w+;base64,/, "");	
+		var base64Data = source.replace(/^data:;base64,/, "");	
 		var dataBuffer = new Buffer(base64Data, 'base64');
 		promiseArr.push(productDocumentsPromise(fileName,dataBuffer,fileSize));
 	});
