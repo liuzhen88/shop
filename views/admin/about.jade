@@ -48,6 +48,20 @@ block sub_content
 					button.ql-clean
 			div#editor-container
 	.save-news#save-news 保存提交
+	.server-has-img 现有新闻
+		- if(data.news.length>0)
+			table#table
+				tr
+					th 新闻标题
+					th 操作
+				- for(var i=0;i<data.news.length;i++)
+					tr
+						td #{data.news[i].title}
+						td 
+							a.common-a.del-about-news(data-id="#{data.news[i]._id}") 删除
+							a.common-a(href='/admin/modifyAboutNews?id=#{data.news[i]._id}') 修改
+		- else
+			.no-data(style='margin-top:30px;') 暂无数据
 block sub-js
 	script(src="/dist/katex.min.js")
 	script(src="/dist/highlight.min.js")

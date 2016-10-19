@@ -7,85 +7,86 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     block sub-css
   body
-    .header(style="background:url('#{data.bg}') no-repeat center;") 
-        .header-top
-            .middle
-                a.header-logo(href='/index')
-                    img(src='/images/index_logo.png')
-                span.chinese 中文
-                span.english English
-        .header-bottom
-            ul#header-ul
-                - if(!data || !data.router || data.router == 'index')
-                    li.active
-                        a(href='/index')
-                            img(src='/images/index_icon1.png', alt='')
-                            p 主 页
-                - else
-                    li
-                        a(href='/index')
-                            img(src='/images/index_icon1.png', alt='')
-                            p 主 页
-                - if(data && data.router && data.router == 'productCenter')
-                    li.active
-                        a(href='/productCenter')
-                            img(src='/images/index_icon2.png', alt='')
-                            p 产品中心
-                - else
-                    li
-                        a(href='/productCenter')
-                            img(src='/images/index_icon2.png', alt='')
-                            p 产品中心
-                - if(data && data.router && data.router == 'download')
-                    li.active
-                        a(href='/download')
-                            img(src='/images/index_icon3.png', alt='')
-                            p 文档下载
-                - else
-                    li
-                        a(href='/download')
-                            img(src='/images/index_icon3.png', alt='')
-                            p 文档下载
-                - if(data && data.router && data.router == 'support')
-                    li.active
-                        a(href='/support')
-                            img(src='/images/index_icon4.png', alt='')
-                            p 技术支持
-                - else
-                    li
-                        a(href='/support')
-                            img(src='/images/index_icon4.png', alt='')
-                            p 技术支持
-                - if(data && data.router && data.router == 'contact')
-                    li.active
-                        a(href='/contact')
-                            img(src='/images/index_icon5.png', alt='')
-                            p 联系我们
-                - else
-                    li
-                        a(href='/contact')
-                            img(src='/images/index_icon5.png', alt='')
-                            p 联系我们
-                - if(data && data.router && data.router == 'about')
-                    li.active
-                        a(href='/about')
-                            img(src='/images/index_icon6.png', alt='')
-                            p 关于我们
-                - else
-                    li
-                        a(href='/about')
-                            img(src='/images/index_icon6.png', alt='')
-                            p 关于我们
-                - if(data && data.router && data.router == 'shop')
-                    li.active
-                        a(href='')
-                            img(src='/images/index_icon7.png', alt='')
-                            p 网上商城
-                - else
-                    li
-                        a(href='')
-                            img(src='/images/index_icon7.png', alt='')
-                            p 网上商城
+    - if(data && data.bg)
+        .header(style="background:url('#{data.bg}') no-repeat center;") 
+            .header-top
+                .middle
+                    a.header-logo(href='/index')
+                        img(src='/images/index_logo.png')
+                    span.chinese 中文
+                    span.english English
+            .header-bottom
+                ul#header-ul
+                    - if(!data || !data.router || data.router == 'index')
+                        li.active
+                            a(href='/index')
+                                img(src='/images/index_icon1.png', alt='')
+                                p 主 页
+                    - else
+                        li
+                            a(href='/index')
+                                img(src='/images/index_icon1.png', alt='')
+                                p 主 页
+                    - if(data && data.router && data.router == 'productCenter')
+                        li.active
+                            a(href='/productCenter')
+                                img(src='/images/index_icon2.png', alt='')
+                                p 产品中心
+                    - else
+                        li
+                            a(href='/productCenter')
+                                img(src='/images/index_icon2.png', alt='')
+                                p 产品中心
+                    - if(data && data.router && data.router == 'download')
+                        li.active
+                            a(href='/download')
+                                img(src='/images/index_icon3.png', alt='')
+                                p 文档下载
+                    - else
+                        li
+                            a(href='/download')
+                                img(src='/images/index_icon3.png', alt='')
+                                p 文档下载
+                    - if(data && data.router && data.router == 'support')
+                        li.active
+                            a(href='/support')
+                                img(src='/images/index_icon4.png', alt='')
+                                p 技术支持
+                    - else
+                        li
+                            a(href='/support')
+                                img(src='/images/index_icon4.png', alt='')
+                                p 技术支持
+                    - if(data && data.router && data.router == 'contact')
+                        li.active
+                            a(href='/contact')
+                                img(src='/images/index_icon5.png', alt='')
+                                p 联系我们
+                    - else
+                        li
+                            a(href='/contact')
+                                img(src='/images/index_icon5.png', alt='')
+                                p 联系我们
+                    - if(data && data.router && data.router == 'about')
+                        li.active
+                            a(href='/about')
+                                img(src='/images/index_icon6.png', alt='')
+                                p 关于我们
+                    - else
+                        li
+                            a(href='/about')
+                                img(src='/images/index_icon6.png', alt='')
+                                p 关于我们
+                    - if(data && data.router && data.router == 'shop')
+                        li.active
+                            a(href='')
+                                img(src='/images/index_icon7.png', alt='')
+                                p 网上商城
+                    - else
+                        li
+                            a(href='')
+                                img(src='/images/index_icon7.png', alt='')
+                                p 网上商城
     block content
     .footer
         .footer-content

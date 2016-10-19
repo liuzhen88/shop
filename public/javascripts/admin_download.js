@@ -122,4 +122,15 @@ $(function(){
 			});
 		}
 	});
+
+	$("#manage").click(function(){
+		var id = "";
+		$("#download-type option").each(function(index,value){
+			if(value.selected == true){
+				id = $(this).attr('data-id');
+			}
+		});
+
+		window.location.href="/admin/manageExplainDocument?id="+id;
+	});
 });

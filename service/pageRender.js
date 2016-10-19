@@ -248,18 +248,21 @@ function checkSessionByAbout(req, res, next){
 		res.redirect("/login");
 		return;
 	}
-	var data = {
-		logoUrl:"/images/logo.png",
-		this_position:"",
-		list:[
-			"首页广告图",
-			"产品中心",
-			"文档下载",
-			"技术支持",
-			"关于我们"
-		]
-	}
-	next(data);
+	newsSchema.find({}).exec(function(err,docs){
+		var data = {
+			logoUrl:"/images/logo.png",
+			this_position:"",
+			list:[
+				"首页广告图",
+				"产品中心",
+				"文档下载",
+				"技术支持",
+				"关于我们"
+			],
+			news:docs
+		}
+		next(data);
+	});
 }
 
 function checkSessionByDownload(req, res, next){
@@ -281,6 +284,62 @@ function checkSessionByDownload(req, res, next){
 			classType:classTypes
 		};
 		next(data);
+	});
+}
+
+function checkSessionByManage(req, res, next){
+	if(!req.session.user){
+		res.redirect("/login");
+		return;
+	}
+	var id = req.query.id;
+	getExplainDataById(id,function(err,result){
+		var data = {
+			logoUrl:"/images/logo.png",
+			this_position:"",
+			list:[
+				"首页广告图",
+				"产品中心",
+				"文档下载",
+				"技术支持",
+				"关于我们"
+			],
+			result:result
+		};
+		next(data);
+	});
+}
+
+function checkSessionByHandleBook(req, res, next){
+	if(!req.session.user){
+		res.redirect("/login");
+		return;
+	}
+	getHandleBook(function(err,result){
+		var data = {
+			logoUrl:"/images/logo.png",
+			this_position:"",
+			list:[
+				"首页广告图",
+				"产品中心",
+				"文档下载",
+				"技术支持",
+				"关于我们"
+			],
+			result:result
+		};
+		next(data);
+	});
+}
+
+function getHandleBook(callback){
+	handleBookSchema.find({}).exec(function(err,docs){
+		if(err){
+			console.log(err);
+			callback(err);
+		}else{
+			callback('',docs);
+		}
 	});
 }
 
@@ -401,9 +460,26 @@ function getExplainData(callback){
 		}
 		var classType = [];
 		docs.forEach(function(value,index){
-			classType.push(value.classType);
+			var obj = {
+				id:value._id,
+				classType:value.classType
+			};
+			classType.push(obj);
 		});
 		callback('',classType);
+	});
+}
+
+function getExplainDataById(id, callback){
+	documentDownloadSchema.findOne({
+		"_id":id
+	},function(err,docs){
+		if(err){
+			console.log(err);
+			callback(err);
+		}else{
+			callback('',docs);
+		}
 	});
 }
 
@@ -412,18 +488,25 @@ function checkSessionBySupport(req, res, next){
 		res.redirect("/login");
 		return;
 	}
-	var data = {
-		logoUrl:"/images/logo.png",
-		this_position:"",
-		list:[
-			"首页广告图",
-			"产品中心",
-			"文档下载",
-			"技术支持",
-			"关于我们"
-		]
-	}
-	next(data);
+	rule.find({}).exec(function(err,docs){
+		if(err){
+			console.log(err);
+			return;
+		}
+		var data = {
+			logoUrl:"/images/logo.png",
+			this_position:"",
+			list:[
+				"首页广告图",
+				"产品中心",
+				"文档下载",
+				"技术支持",
+				"关于我们"
+			],
+			data:docs
+		}
+		next(data);
+	});
 }
 
 //news
@@ -449,12 +532,36 @@ function renderNewsDetail(req, res){
 				],
 				news:docs
 			};
-			console.log(data);
 			deferred.resolve(data);
 		}
 	});
 
 	return deferred.promise;
+}
+
+function checkSessionByManageArticle(req, res, next){
+	supportSchema.find({
+		"name":"technical_support_article"
+	}).exec(function(err,result){
+		if(err){
+			console.log(err);
+			next(err);
+		}else{
+			var data = {
+				logoUrl:"/images/logo.png",
+				this_position:"",
+				list:[
+					"首页广告图",
+					"产品中心",
+					"文档下载",
+					"技术支持",
+					"关于我们"
+				],
+				article:result
+			};
+			next('',data);
+		}
+	});
 }
 
 module.exports = {
@@ -471,5 +578,8 @@ module.exports = {
 	checkSessionByDownload:checkSessionByDownload,
 	checkSessionByAddDownloadClass:checkSessionByAddDownloadClass,
 	checkSessionBySupport:checkSessionBySupport,
-	renderNewsDetail:renderNewsDetail
+	renderNewsDetail:renderNewsDetail,
+	checkSessionByManage:checkSessionByManage,
+	checkSessionByHandleBook:checkSessionByHandleBook,
+	checkSessionByManageArticle:checkSessionByManageArticle
 }

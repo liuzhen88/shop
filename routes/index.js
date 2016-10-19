@@ -136,7 +136,28 @@ router.get('/admin/support',function(req,res,next){
 router.get("/modifyPassword",function(req,res,next){
 	pageRender.checkSession(req,res,function(data){
 		data.this_position = "修改密码";
-		res.render('./admin/modifyPassword',{data});
+		res.render('./admin/modifyPassword',{data:data});
+	});
+});
+
+router.get('/admin/manageExplainDocument',function(req,res){
+	pageRender.checkSessionByManage(req,res,function(data){
+		data.this_position = "文档下载-产品说明文档管理";
+		res.render('./admin/manageExplainDocument',{data:data});
+	});
+});
+
+router.get('/admin/manageHandleBook',function(req,res){
+	pageRender.checkSessionByHandleBook(req,res,function(data){
+		data.this_position = "文档下载-产品手册管理";
+		res.render('./admin/manageHandleBook',{data:data});
+	});
+});
+
+router.get('/admin/manageArticle',function(req,res){
+	pageRender.checkSessionByManageArticle(req,res,function(err,data){
+		data.this_position = "技术支持-技术文章管理";
+		res.render('./admin/manageArticle',{data:data});
 	});
 });
 

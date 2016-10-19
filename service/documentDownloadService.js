@@ -268,8 +268,84 @@ function saveDownloadsClass(req, res){
 	return deferred.promise;
 }
 
+function deleteExplainDocument(req, res){
+	var deferred = q.defer();
+	var documentId = req.query.documentId;
+	var id = req.query.id;
+	documentDownloadSchema.findOne({
+		"_id":documentId
+	},function(err,docs){
+		if(err){
+			console.log(err);
+			deferred.reject(err)
+		}else{
+			var arr = docs.data;
+			arr.forEach(function(value,index){
+				if(value._id == id){
+					arr.splice(index,1);
+				}
+			});
+			documentDownloadSchema.update({
+				"_id":documentId
+			},{
+				$set:{
+					data:arr
+				}
+			},function(err){
+				if(err){
+					deferred.reject(err);
+				}else{
+					var context = config.data.success;
+					deferred.resolve(context);
+				}
+			})
+		}
+	});
+
+	return deferred.promise;
+}
+
+function deleteAllExplainDocument(req, res){
+	var id = req.query.id;
+	var deferred = q.defer();
+	documentDownloadSchema.remove({
+		"_id":id
+	},function(err){
+		if(err){
+			console.log(err);
+			deferred.reject(err);
+		}else{
+			var context = config.data.success;
+			deferred.resolve(context);
+		}
+	});
+
+	return deferred.promise;
+}
+
+function deleteHandleBook(req, res){
+	var id = req.query.id;
+	var deferred = q.defer();
+	documentsSchema.remove({
+		"_id":id
+	},function(err){
+		if(err){
+			console.log(err);
+			deferred.reject(err);
+		}else{
+			var context = config.data.success;
+			deferred.resolve(context);
+		}
+	});
+
+	return deferred.promise;
+}
+
 module.exports = {
 	saveDownloadDocument:saveDownloadDocument,
 	savehandlebook:savehandlebook,
-	saveDownloadsClass:saveDownloadsClass
+	saveDownloadsClass:saveDownloadsClass,
+	deleteExplainDocument:deleteExplainDocument,
+	deleteAllExplainDocument:deleteAllExplainDocument,
+	deleteHandleBook:deleteHandleBook
 }

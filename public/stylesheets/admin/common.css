@@ -1139,6 +1139,21 @@ body{
 	margin-left: 20px;	
 	cursor: pointer;
 }
+.manage-handle-book{
+	position: relative;
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+	border-radius: 4px;
+	line-height: 30px;
+	text-align: center;
+	z-index: 10;
+	margin-top: 40px;
+	background: #14ACFC;
+	color: #fff;
+	margin-left: 20px;	
+	cursor: pointer;
+}
 .hidden{
 	opacity: 0;
 	position: absolute;
@@ -1168,4 +1183,60 @@ body{
 	height: auto;
 	text-align: center;
 	margin-top: 20px;
+}
+.explain-document-containers{
+  margin-top: 30px;
+  padding: 0px 30px;
+  text-align: center;
+}
+.explain-document-list{
+	border: solid #ccc 1px;
+	border-radius: 10px;
+	padding: 0px 10px;
+	text-align: center;
+	padding-top: 10px;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.explain-document-action{
+	width: 100px;
+	text-align: center;
+	background-color: #14ACFC;
+	color: #fff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.clear{
+	clear: both;
+}
+.delete-all{
+	width: 200px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #14ACFC;
+	color: #fff;
+	margin: 0 auto;
+	cursor: pointer;
+}
+#table{
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+#table th{
+	border: solid #ccc 1px;
+	text-align: center;
+}
+#table td{
+	border: solid #ccc 1px;
+	text-align: center;
+}
+.common-a{
+	color: #999;
+	margin-left: 10px;
+	text-decoration: underline;
+	cursor: pointer;
 }

@@ -1,0 +1,14 @@
+extends indexCommon
+
+block sub_content
+	.explain-document-containers
+		- if(data.result)
+			- for(var i=0;i<data.result.length;i++)
+				.explain-document-list
+					img(src='/images/zip.png')
+					.explain-document-name #{data.result[i].fileName}
+					.explain-document-action(data-id="#{data.result[i]._id}") 删除
+				.clear
+
+block sub-js
+	script(src='/javascripts/admin_manage_handle_book.js')

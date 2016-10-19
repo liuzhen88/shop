@@ -6,9 +6,10 @@ block sub_content
 		span 产品说明文档分类 ：
 		select.form-control#download-type
 			- for(var i=0;i<data.classType.length;i++)
-				option #{data.classType[i]}
+				option(data-id='#{data.classType[i].id}') #{data.classType[i].classType}
 		span(style='margin-left:10px;') 
 			a(href='/admin/addDownloadClass') 添加分类
+			a(id='manage' style='margin-left:10px;cursor:pointer;text-decoration:underline;') 管理
 	#upload-container
 	.product-document-container
 		span.product-explain-select 选择文件
@@ -20,5 +21,6 @@ block sub_content
 		span.product-handlebook-select 选择文件
 			input.hidden#handlebook-uploads(type='file')
 		span.product-explain-save#product-handlebook-save 提交
+		a.manage-handle-book(href='/admin/manageHandleBook') 管理
 block sub-js
 	script(src='/javascripts/admin_download.js')

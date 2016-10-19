@@ -121,6 +121,22 @@ $(function(){
 			}
 		});
 	}
+
+	$(".del").click(function(){
+		var id = $(this).attr('data-id');
+		$.ajax({
+			url:serverUrl+'/users/delRuleImage?id='+id,
+			type:'get',
+			dataType:'json',
+			success:function(data){
+				alert(data.message);
+				window.location.reload();
+			},
+			error:function(err){
+				console.log(err);
+			}
+		});
+	});
 });
 function del(obj){
 	var sendDataImage = gobal.sendDataImage;

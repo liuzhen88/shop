@@ -1,0 +1,22 @@
+extends indexCommon
+
+block sub_content
+	.product-explain-document
+		span 产品说明文档分类 ：
+		- if(data.result)
+			- if(data.result.classType)
+				input.form-control(type='text' value='#{data.result.classType}')
+	.explain-document-containers
+		- if(data.result)
+			- if(data.result.data)
+				- for(var i=0;i<data.result.data.length;i++)
+					.explain-document-list
+						img(src='/images/zip.png')
+						.explain-document-name #{data.result.data[i].fileName}
+						.explain-document-action(data-top-id="#{data.result._id}" data-id="#{data.result.data[i]._id}") 删除
+					.clear
+	- if(data.result)
+		- if(data.result._id)
+			.delete-all#delete-all(data-id='#{data.result._id}') 删除整个分类
+block sub-js
+	script(src='/javascripts/admin_manage_explain_document.js')

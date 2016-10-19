@@ -76,7 +76,25 @@ function getPageData(req, res){
 	return deferred.promise;
 }
 
+function deleteAboutNewsById(req, res){
+	var id = req.query.id;
+	var deferred = q.defer();
+	newsSchema.remove({
+		"_id":id
+	},function(err){
+		if(err){
+			deferred.reject(err);
+		}else{
+			var context = config.data.success;
+			deferred.resolve(context);
+		}
+	});
+
+	return deferred.promise;
+}
+
 module.exports = {
 	saveNews:saveNews,
-	getPageData:getPageData
+	getPageData:getPageData,
+	deleteAboutNewsById:deleteAboutNewsById
 }

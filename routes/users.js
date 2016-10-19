@@ -143,4 +143,52 @@ router.post("/modifyPassword",function(req, res){
 	});
 });
 
+router.get('/deleteExplainDocument',function(req, res){
+	documentDownloadService.deleteExplainDocument(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
+router.get('/deleteAllExplainDocument',function(req,res){
+	documentDownloadService.deleteAllExplainDocument(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
+router.get('/deleteHandleBook',function(req,res){
+	documentDownloadService.deleteHandleBook(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
+router.get('/deleteArticle',function(req,res){
+	supportService.deleteArticle(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
+router.get('/delRuleImage',function(req,res){
+	supportService.delRuleImage(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
+router.get('/deleteAboutNewsById',function(req,res){
+	newsService.deleteAboutNewsById(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
 module.exports = router;

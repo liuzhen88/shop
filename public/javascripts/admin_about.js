@@ -25,6 +25,14 @@ $(function(){
 				}
 				app.saveNews(title, content);
 			});
+
+			$(".del-about-news").click(function(){
+				var thisId = $(this).attr('data-id');
+				var f = confirm('确定要删除吗?');
+				if(f){
+					app.removeNewsById(thisId);
+				}
+			});
 		},
 		saveNews:function(title, content){
 			$.ajax({
@@ -43,7 +51,22 @@ $(function(){
 						alert(data.message);
 					}
 				}
-			})
+			});
+		},
+		removeNewsById:function(id){
+			$.ajax({
+				url:serverUrl+"/users/deleteAboutNewsById?id="+id,
+				type:'get',
+				dataType:'json',
+				success:function(data){
+					if(data.code == 200){
+						alert(data.message);
+						window.location.reload();
+					}else{
+						alert(data.message);
+					}
+				}
+			});
 		}
 	}
 	app.init();

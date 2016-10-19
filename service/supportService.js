@@ -161,7 +161,43 @@ function fsPromise(dataBuffer, fileName, fileType){
 	return deferred.promise;
 }
 
+function deleteArticle(req, res){
+	var deferred = q.defer();
+	var id = req.query.id;
+	supportSchema.remove({
+		"_id":id
+	},function(err){
+		if(err){
+			deferred.reject(err);
+		}else{
+			var context = config.data.success;
+			deferred.resolve(context);
+		}
+	});
+
+	return deferred.promise;
+}
+
+function delRuleImage(req, res){
+	var id = req.query.id;
+	var deferred = q.defer();
+	productNameRuleSchema.remove({
+		"_id":id
+	},function(err){
+		if(err){
+			deferred.reject(err);
+		}else{
+			var context = config.data.success;
+			deferred.resolve(context);
+		}
+	});
+
+	return deferred.promise;
+}
+
 module.exports = {
 	saveSupportArticle:saveSupportArticle,
-	loadProductNamerule:loadProductNamerule
+	loadProductNamerule:loadProductNamerule,
+	deleteArticle:deleteArticle,
+	delRuleImage:delRuleImage
 }
