@@ -69,4 +69,24 @@ $(function(){
 			}
 		})
 	}
+
+	$('.del-about-news').click(function(){
+		var f = confirm('确定要删除吗?');
+		if(f){
+			var id = $(this).attr('data-top-id');
+			var listId = $(this).attr('data-list-id');
+			$.ajax({
+				url:serverUrl+"/users/deletePrecentCenterDocument?id="+id+"&listId="+listId,
+				type:'get',
+				dataType:'json',
+				success:function(data){
+					alert(data.message);
+					window.location.reload();
+				},
+				error:function(err){
+					alert(err);
+				}
+			});
+		}
+	});
 });

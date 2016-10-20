@@ -161,4 +161,11 @@ router.get('/admin/manageArticle',function(req,res){
 	});
 });
 
+router.get('/admin/modifyAboutNews',function(req,res){
+	pageRender.checkSessionByNews(req,res,function(err,data){
+		data.this_position = "关于我们-新闻修改";
+		res.render('./admin/modifyAboutNews',{data:data});
+	});
+});
+
 module.exports = router;

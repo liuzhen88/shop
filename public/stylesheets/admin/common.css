@@ -1240,3 +1240,9 @@ body{
 	text-decoration: underline;
 	cursor: pointer;
 }
+.table-container{
+	margin-bottom: 100px;
+}
+.table-container th,.table-container td{
+	height: 40px;
+}

@@ -9,9 +9,9 @@ block sub_content
 	.product-class-container
 		span 分类 : 
 		select.form-control.common-input#product-class
-			- if(data.productClass.length>0)
-				- for(var i=0;i<data.productClass.length;i++)
-					option #{data.productClass[i]}
+			- if(data.datas.length>0)
+				- for(var i=0;i<data.datas.length;i++)
+					option #{data.datas[i].productClass}
 		span
 			a.create-class-a(href='/admin/addProductClass') 点此创建分类
 		.product-title-describe
@@ -63,6 +63,23 @@ block sub_content
 					div#editor-container
 	.save-product#save-product 保存
 	.server-has-img 现有产品中心
+	- if(data.datas.length>0)
+		.table-container
+			table#table
+				tr
+					th 分类名
+					th 标题
+					th 操作
+				- for(var i=0;i<data.datas.length;i++)
+					- for(var j=0;j<data.datas[i].list.length;j++)
+						tr
+							td #{data.datas[i].productClass}
+							td #{data.datas[i].list[j].title}
+							td 
+								a.common-a.del-about-news(data-top-id='#{data.datas[i]._id}' data-list-id='#{data.datas[i].list[j]._id}') 删除
+								a.common-a(data-top-id='#{data.datas[i]._id}' data-list-id='#{data.datas[i].list[j]._id}') 修改
+	- else
+		.no-data(style='margin-top:30px;') 暂无数据
 block sub-js
 	script(src="/dist/katex.min.js")
 	script(src="/dist/highlight.min.js")

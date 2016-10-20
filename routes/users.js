@@ -191,4 +191,20 @@ router.get('/deleteAboutNewsById',function(req,res){
 	});
 });
 
+router.post('/upateNewsContentById',function(req,res){
+	newsService.upateNewsContentById(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
+router.get('/deletePrecentCenterDocument',function(req,res){
+	productCenterService.deletePrecentCenterDocument(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
 module.exports = router;

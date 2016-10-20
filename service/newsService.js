@@ -93,8 +93,34 @@ function deleteAboutNewsById(req, res){
 	return deferred.promise;
 }
 
+function upateNewsContentById(req, res){
+	var deferred = q.defer();
+	var id = req.body.id;
+	var title = req.body.title;
+	var content = req.body.content;
+
+	newsSchema.update({
+		"_id":id
+	},{
+		$set:{
+			title:title,
+			content:content
+		}
+	},function(err){
+		if(err){
+			deferred.reject(err);
+		}else{
+			var c = config.data.success;
+			deferred.resolve(c);
+		}
+	});
+
+	return deferred.promise;
+}
+
 module.exports = {
 	saveNews:saveNews,
 	getPageData:getPageData,
-	deleteAboutNewsById:deleteAboutNewsById
+	deleteAboutNewsById:deleteAboutNewsById,
+	upateNewsContentById:upateNewsContentById
 }

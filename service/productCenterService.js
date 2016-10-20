@@ -138,8 +138,62 @@ function getProductClassDataById(req, res){
 	return deferred.promise;
 }
 
+function deletePrecentCenterDocument(req, res){
+	var deferred = q.defer();
+	var id = req.query.id;
+	var listId = req.query.listId;
+	productCenterSchema.findOne({
+		"_id":id
+	},function(err,docs){
+		if(err){
+			deferred.reject(err);
+		}else{
+			if(docs.list.length == 1){
+				//删除整个
+				productCenterSchema.remove({
+					"_id":id
+				},function(err){
+					if(err){
+						deferred.reject(err);
+					}else{
+						var cont = config.data.success;
+						deferred.resolve(cont);
+					}
+				});
+			}else{
+				//删除list里面选中的
+				var list = docs.list;
+				var indexs = '';
+				list.forEach(function(value,index){
+					if(value._id == listId){
+						indexs = index;
+					}
+				});
+				list.splice(indexs,1);
+				productCenterSchema.update({
+					'_id':id
+				},{
+					$set:{
+						list:list
+					}
+				},function(err){
+					if(err){
+						deferred.reject(err);
+					}else{
+						var cont = config.data.success;
+						deferred.resolve(cont);
+					}
+				});
+			}
+		}
+	});
+
+	return deferred.promise;
+}
+
 module.exports = {
 	saveProductData:saveProductData,
 	saveNewProductClass:saveNewProductClass,
-	getProductClassDataById:getProductClassDataById
+	getProductClassDataById:getProductClassDataById,
+	deletePrecentCenterDocument:deletePrecentCenterDocument
 }

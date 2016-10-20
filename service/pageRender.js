@@ -363,7 +363,7 @@ function checkSessionByProductCenter(req, res, next){
 				"技术支持",
 				"关于我们"
 			],
-			productClass:productClass
+			datas:productClass
 		}
 		next(data);
 	});
@@ -444,11 +444,11 @@ function getProductCenterData(callback){
 		if(err){
 			callback(err);
 		}
-		var productClass = [];
-		docs.forEach(function(value,index){
-			productClass.push(value.productClass);
-		});
-		callback('',productClass);
+		// var productClass = [];
+		// docs.forEach(function(value,index){
+		// 	productClass.push(value.productClass);
+		// });
+		callback('',docs);
 	});
 }
 
@@ -564,6 +564,32 @@ function checkSessionByManageArticle(req, res, next){
 	});
 }
 
+function checkSessionByNews(req, res, next){
+	var deferred = q.defer();
+	var id = req.query.id;
+	newsSchema.findOne({
+		"_id":id
+	},function(err,docs){
+		if(err){
+			next(err);
+			return;
+		}
+		var data = {
+			logoUrl:"/images/logo.png",
+			this_position:"",
+			list:[
+				"首页广告图",
+				"产品中心",
+				"文档下载",
+				"技术支持",
+				"关于我们"
+			],
+			news:docs
+		};
+		next('',data);
+	});
+}
+
 module.exports = {
 	renderIndex:renderIndex,
 	renderProductCenter:renderProductCenter,
@@ -581,5 +607,6 @@ module.exports = {
 	renderNewsDetail:renderNewsDetail,
 	checkSessionByManage:checkSessionByManage,
 	checkSessionByHandleBook:checkSessionByHandleBook,
-	checkSessionByManageArticle:checkSessionByManageArticle
+	checkSessionByManageArticle:checkSessionByManageArticle,
+	checkSessionByNews:checkSessionByNews
 }
