@@ -89,4 +89,10 @@ $(function(){
 			});
 		}
 	});
+
+	$('.modify-about-news').click(function(){
+		var id = $(this).attr('data-top-id');
+		var listId = $(this).attr('data-list-id');
+		window.location.href='/admin/modifyProductList?id='+id+'&listId='+listId;
+	});
 });

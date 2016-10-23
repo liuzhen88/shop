@@ -1,0 +1,70 @@
+extends layout
+block title
+	title #{data.title}
+
+block content
+	.about-content#about-content
+		.map-title 公司简介
+		.map-alias COMPANY PROFILE
+		.line
+			img(src='/images/contact_underline.png')
+		.company-introduce-container
+			.company-introduce
+				.com-top
+					p 
+						span 
+							i.ft 南京安崇电子有限公司 
+						span &nbsp&nbsp专业从事微波器件的研发和生产，拥有专业的设计团队和精密机加工技术，致力于高性能和毫米波无源部件的设计开发。公司产品主要有：
+					p.p-list(style='margin-top:32px;') 
+						● 矢量网络分析仪专用高性能稳幅稳相测试电缆，工作频率覆盖DC~67GHz，端口类型包括N型、NMD3.5mm、NMD2.92mm、NMD2.4mm、NMD1.85mm。
+					p.p-list 
+						● 各类毫米波电缆组件，产品最高工作频率可达67GHz；可按用户要求提供相位匹配电缆。
+					p.p-list 
+						● 高精度射频同轴校准件，端口类型包括N型和3.5mm。后续将提供更多种类的产品。
+					p.p-list 
+						● 高性能校准端口专用适配器，用于矢量网络分析仪、测试电缆校准端口（NMD端口）的保护和转换；并为测试提供高精度校准端口，保证原有测试精度
+					p.p-list 
+						● 各类测试夹具及测试附件的研制和生产。
+					p.bt(style='margin-top:32px;') 本公司客户涵盖研究所、军工企业、通信企业及高校和科研单位，产品已出口欧美等国家，并已为国外企业提供OEM。希望我公司以专业的技术、优质的产品，服务于更多的国内外企业，扩大毫米波与高性能产品的应用范围，实现进口微波器件的国产化替代，为我国微波通信及测量事业的发展做出贡献。
+	.qualifications#qualifications
+		.null-div
+		.map-title(style='color:#30a1fd') 资质文件
+		.map-alias QUALIFICATION DOCUMENTS
+		.line
+			img(src='/images/about_underline1.png')
+		.img-qu-container
+			ul
+				li
+					img(src="/images/about_pic.png")
+				li
+					img(src="/images/about_pic1.png")
+				li
+					img(src="/images/about_pic2.png")
+				li
+					img(src="/images/about_pic3.png")
+				li(style='margin-right:0px;')
+					img(src="/images/about_pic4.png")
+	.company-news#company-news
+		.company-news-container
+			.null-div
+			.map-title.pro 公司新闻
+			.map-alias COMPANY NEWS
+			.line
+				img(src='/images/index_underline2.png')
+		.company-new-content
+			ul#news-container(data-total="#{data.total}")
+				- if(data.data.length>0)
+					- for(var i=0;i<data.data.length;i++)
+						- if(i%2 != 0)
+							li.news(data-id="#{data.data[i]._id}")
+								a #{data.data[i].title}
+								span.news-time #{data.data[i].time}
+						- else
+							li.news.mf(data-id="#{data.data[i]._id}")
+								a #{data.data[i].title}
+								span.news-time #{data.data[i].time}
+	.new-page-container
+		a.prev.not-click#prev 上一页
+		a.next#next 下一页
+block sub-js
+	script(src='/javascripts/about.js')

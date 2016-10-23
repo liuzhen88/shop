@@ -1,0 +1,59 @@
+extends layout
+block title
+  title #{data.title} 
+block sub-css
+  link(rel='stylesheet', href='/stylesheets/index.css') 
+block content
+  .setnames#setnames
+    .name
+      .allheads.theme2
+        h2 产品命名规则
+        p PRODUCT CATEGORY
+      ul.namefor
+        - if(data.rules.length>0)
+          - for(var i=0;i<data.rules.length;i++)
+            li
+              img(src='#{data.rules[i].filePath}', alt='')
+              div
+                h2 通用规则
+                p 点击查看
+    .overwhach
+      img(src='images/shutdown.png', alt='')
+      img(src='images/index_product1.png', alt='')
+  .diy#diy
+    .allheads.theme1
+      h2 维修和定制业务
+      p REPAIR AND CUSTOM SERVICE
+    .diy-main
+      dl
+        dt.diy-down 电缆组件维修业务
+        dd
+          p
+            | ● VNA测试电缆组件维修：对安崇电子VNA电缆组件提供保修和维修服务。也可维修各公司其他各公司VNA测试电缆组件。
+            br
+            | 			● 常用测试电缆组件维修：维修各公司测试电缆，并提供测试电缆缩短改造。
+      dl
+        dt 校准件维修业务
+        dd
+          p ● 对各公司校准件提供维修服务，或提供单件校准件解决配套问题。
+      dl
+        dt 定制业务
+        dd
+          p
+            | ● 提供各种测试夹具和测试附件的订制服务。
+            br
+            |  			● 提供电缆组件的装配代工服务，由客户提供裸缆，安崇电子根据客户要求提供电缆组件的装配和测试。
+  .download#download
+    .allheads
+      h2 技术文章
+      p TECHNICAL ARTICLE
+    .downloadtext
+      section.buttons
+        .container
+          div
+            - if(data.supportData.length>0)
+              - for(var i=0;i<data.supportData.length;i++)
+                a.btn.btn-4(href='#{data.supportData[i].filePath}')
+                  span #{data.supportData[i].fileName}
+block sub-js
+  script(src='/javascripts/support.js')

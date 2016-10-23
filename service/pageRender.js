@@ -590,6 +590,53 @@ function checkSessionByNews(req, res, next){
 	});
 }
 
+function checkSessionByModifyProductList(req, res, next){
+	var id = req.query.id;
+	var listId = req.query.listId;
+	productCenterSchema.findOne({
+		"_id":id
+	},function(err,docs){
+		if(err){
+			next(err);
+		}else{
+			var obj = {
+				"_id":docs._id,
+				"productClass":docs.productClass,
+				data:{}
+			}
+			console.log(listId);
+			console.log('====================');
+			docs.list.forEach(function(vv,ii){
+				console.log(vv._id);
+				if(vv._id == listId){
+					obj.data = {
+						"_id" : vv._id, 
+			            "createTime" : vv._crateTime, 
+			            "content" : vv.content, 
+			            "url" : vv.url, 
+			            "fileType" : vv.fileType, 
+			            "fileName" : vv.fileName, 
+			            "title" : vv.title
+					}
+				}
+			});
+			var data = {
+				logoUrl:"/images/logo.png",
+				this_position:"",
+				list:[
+					"首页广告图",
+					"产品中心",
+					"文档下载",
+					"技术支持",
+					"关于我们"
+				],
+				product:obj
+			};
+			next('',data);
+		}
+	});
+}
+
 module.exports = {
 	renderIndex:renderIndex,
 	renderProductCenter:renderProductCenter,
@@ -608,5 +655,6 @@ module.exports = {
 	checkSessionByManage:checkSessionByManage,
 	checkSessionByHandleBook:checkSessionByHandleBook,
 	checkSessionByManageArticle:checkSessionByManageArticle,
-	checkSessionByNews:checkSessionByNews
+	checkSessionByNews:checkSessionByNews,
+	checkSessionByModifyProductList:checkSessionByModifyProductList
 }

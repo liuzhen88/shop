@@ -10,7 +10,8 @@ $(function(){
 			url:'../users/saveNewProductClass',
 			type:'post',
 			data:{
-				productClass:productClass
+				productClass:productClass,
+				productClassEn:productClassEn
 			},
 			dataType:"json",
 			success:function(data){

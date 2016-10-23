@@ -11,39 +11,39 @@ html
     .banner
       .middle
         a.logo(href='')
-          img(src='images/index_logo.png', alt='')
-        a.chinese(href='/index') 中文
-        a.english(style='color:#000' href='/en/index') English
+          img(src='/images/index_logo.png', alt='')
+        span.chinese(style='color:#000') 中文
+        span.english(style='color:#e14848') English
       .navbar
         ul
           li.active
-            a(href='/index')
-              img(src='images/index_icon1.png', alt='')
-              p 主 页
+            a(href='/en/index')
+              img(src='/images/index_icon1.png', alt='')
+              p index
           li
-            a(href='/productCenter')
-              img(src='images/index_icon2.png', alt='')
-              p 产品中心
+            a(href='/en/productCenter')
+              img(src='/images/index_icon2.png', alt='')
+              p product center
           li
-            a(href='/download')
-              img(src='images/index_icon3.png', alt='')
-              p 文档下载
+            a(href='/en/download')
+              img(src='/images/index_icon3.png', alt='')
+              p download
           li
-            a(href='/support')
-              img(src='images/index_icon4.png', alt='')
-              p 技术支持
+            a(href='/en/support')
+              img(src='/images/index_icon4.png', alt='')
+              p support
           li
-            a(href='/contact')
-              img(src='images/index_icon5.png', alt='')
-              p 联系我们
+            a(href='/en/contact')
+              img(src='/images/index_icon5.png', alt='')
+              p contact
           li
-            a(href='/about')
-              img(src='images/index_icon6.png', alt='')
-              p 关于我们
+            a(href='/en/about')
+              img(src='/images/index_icon6.png', alt='')
+              p about
           li
             a(href='')
-              img(src='images/index_icon7.png', alt='')
-              p 网上商城
+              img(src='/images/index_icon7.png', alt='')
+              p shop
       .b-img
         - if(data.bannerData.banner.length>0)
           - for(var i=0;i<data.bannerData.banner.length;i++)
@@ -59,9 +59,9 @@ html
       ul
         - for(var i=0;i<data.productCenter.length;i++)
           li
-            a(href='/productCenter')
+            a(href='/en/productCenter')
               p #{data.productCenter[i].productClass}
-              img(src='images/index_producttosee.png', alt='')
+              img(src='/images/index_producttosee.png', alt='')
             - if(data.productCenter[i].list.length>0)
               img(width='270px' height='230px' src='#{data.productCenter[i].list[0].url}', alt='')
     .index_intro
@@ -70,10 +70,10 @@ html
           h2 南京安崇电子有限公司
           p
             | 南京安崇电子有限公司是一家从事射频微波精密测试附件的专业性公司。公司业务范围覆盖射频微波校准件、射频电缆组件、其它高性能测试相关的微波器件的开发、生产及维修服务。公司具有严谨的设计，精密的机加工，采用一流的材料与工艺，为您提供日益丰富的解决方案和产品测试方面提供全方位的服务。公司以专业化的产品、可靠的质量、良好的信誉为生存之本，以客户需求为导向，竭诚为海内外客户提供服务。
-          a(href='/about') 查看更多 +
+          a(href='/en/about') 查看更多 +
         .intro_r
           div
-            img(src='images/index_changepic.png', alt='')
+            img(src='/images/index_changepic.png', alt='')
     .index_news
       .allheads.theme1
         h2 新闻动态
@@ -92,8 +92,8 @@ html
                   span #{data.news[i].time}
                 p(title='#{data.news[i].content}')
                   | !{data.news[i].content}
-                a(href='/newsDetail?id=#{data.news[i]._id}') 查看更多
-        a.seemore(href='/about#company-news') 查看更多
+                a(href='/en/newsDetail?id=#{data.news[i]._id}') 查看更多
+        a.seemore(href='/en/about#company-news') 查看更多
     .footer
       .footer-content
         .footer-content-container
@@ -102,46 +102,46 @@ html
             .footer-about-us-header 
               i 关于我们
             .footer-about-us-list 
-              a(href="/about#about-content") 公司简介
+              a(href="/en/about#about-content") 公司简介
             .footer-about-us-list 
-              a(href="/about#qualifications") 资质文件
+              a(href="/en/about#qualifications") 资质文件
             .footer-about-us-list 
-              a(href="/about#company-news") 公司新闻
+              a(href="/en/about#company-news") 公司新闻
             .footer-about-us-list 
               a(href="#") 公司环境
           .footer-support
             .footer-about-us-header 
               i 技术支持
             .footer-about-us-list 
-              a(href="/support#setnames") 产品命名规则
+              a(href="/en/support#setnames") 产品命名规则
             .footer-about-us-list 
-              a(href="/support#diy") 维修和定制业务
+              a(href="/en/support#diy") 维修和定制业务
             .footer-about-us-list 
-              a(href="/support#download") 技术文章
+              a(href="/en/support#download") 技术文章
             .footer-about-us-list 
-              a(href="/download#download-containers") 产品手册下载
+              a(href="/en/download#download-containers") 产品手册下载
           .footer-contact
             .footer-about-us-header 
               i 联系我们
             .footer-support-address 
-              a(href="/contact#map-title-contact") 地址 ： 江苏省南京市江宁区东麒路33号东山国际
+              a(href="/en/contact#map-title-contact") 地址 ： 江苏省南京市江宁区东麒路33号东山国际
             .footer-address 
-              a(href="/contact#map-title-contact") 企业研发园4楼
+              a(href="/en/contact#map-title-contact") 企业研发园4楼
             .footer-email
               .footer-about-us-headers 
               .footer-support-email 
-                a(href="/contact#map-title-contact") 邮编 ： 211100
+                a(href="/en/contact#map-title-contact") 邮编 ： 211100
               .footer-email
                 .footer-about-us-headers 
                 .footer-support-tel 
-                  a(href="/contact#map-title-contact") 电话 ： +86-25-58817997
+                  a(href="/en/contact#map-title-contact") 电话 ： +86-25-58817997
           .footer-other
             .footer-about-us-header
               .footer-cz
-                a(href="/contact#map-title-contact") 传真 ：+86-25-580722397
+                a(href="/en/contact#map-title-contact") 传真 ：+86-25-580722397
               .footer-yj
-                a(href="/contact#map-title-contact") 邮件 ：sales@arance-rf.com( 销售 )
+                a(href="/en/contact#map-title-contact") 邮件 ：sales@arance-rf.com( 销售 )
               .footer-yj-null
-                a(href="/contact#map-title-contact") tech@arance-rf.com( 技术支持 )
+                a(href="/en/contact#map-title-contact") tech@arance-rf.com( 技术支持 )
     script(src='/javascripts/jquery-2.1.4.min.js')
     script(src='/javascripts/banner.js')

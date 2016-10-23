@@ -1,0 +1,37 @@
+extends layout
+block title
+	title #{data.title}
+
+block content
+	.product-explan-container
+		.download-container
+			.map-title.pro 产品说明文档
+			.map-alias PRODUCT DOCUMENTATION
+			.line
+				img(src='/images/index_underline2.png')
+	.cont-container
+		.product-document
+			ul
+				- if(data.explainDocuments.length>0)
+					- for(var i=0;i<data.explainDocuments.length;i++)
+						li.document-list.border-right
+							.document-list-title #{data.explainDocuments[i].classType}
+							.document-list-content 
+								- for(var j=0;j<data.explainDocuments[i].data.length;j++)
+									p 
+										a(style='color:#000' href="#{data.explainDocuments[i].data[j].filePath}") #{data.explainDocuments[i].data[j].fileName} 
+	.null-border-bottom
+	.download-containers#download-containers
+		.download-container
+			.map-title.dn 产品手册下载
+			.map-alias PRODUCT MANUALS
+			.line
+				img(src='/images/index_underline1.png')
+		.downlod-files
+			- if(data.handleBooks.length>0)
+				- for(var ii=0;ii<data.handleBooks.length;ii++)
+					.file-list
+						span #{data.handleBooks[ii].fileName}
+						a(href="#{data.handleBooks[ii].filePath}") 下载
+block sub-js
+	script(src='/javascripts/download.js')

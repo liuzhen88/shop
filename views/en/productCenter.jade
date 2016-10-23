@@ -1,0 +1,45 @@
+extends layout
+block title
+  title #{data.title}
+block sub-css
+  link(rel='stylesheet', href='/stylesheets/index.css') 
+block content
+  .products
+    .allheads.theme2
+        h2 产品中心
+        p PRODUCTS CENTER
+    .productall
+        ul.navs
+          - for(var i=0;i<data.data.length;i++)
+            - if(i == 0)
+              li.lisa(data-id='#{data.data[i]._id}' title='#{data.data[i].productClass}') #{data.data[i].productClass}
+            - else
+              li(data-id='#{data.data[i]._id}' title='#{data.data[i].productClass}') #{data.data[i].productClass}
+        .setproduct
+          ul#productClassList
+            - if(data.data.length>0)
+              - for(var j=0;j<data.data[0].list.length;j++)
+                - if(j == 0)
+                  li.product-class-list.checked(data-id='#{data.data[0].list[j]._id}' data-result='#{JSON.stringify(data.data[0].list[j])}')
+                    img(src='#{data.data[0].list[j].url}', alt='')
+                    p #{data.data[0].list[j].title}
+                    img.checkedimg(src='/images/checked.png')
+                - else
+                  li.product-class-list(data-id='#{data.data[0].list[j]._id}' data-result='#{JSON.stringify(data.data[0].list[j])}')
+                    img(src='#{data.data[0].list[j].url}', alt='')
+                    p #{data.data[0].list[j].title}
+    .producttitle
+      img#selectedImage(src='/images/tecno_icon2.png', alt='')
+      - if(data.data.length>0)
+        p#selectedTitle #{data.data[0].list[0].title}
+    .productmore
+      .leftproduct
+        - if(data.data.length>0)
+          img#checkedClassImage(src='#{data.data[0].list[0].url}', alt='')
+          p#checkedClassTitle #{data.data[0].list[0].title}
+      .rightproduct
+        - if(data.data.length>0)
+          .cont#checkedClassContent !{data.data[0].list[0].content}
+        input(type='button', value='下载pdf')
+block sub-js
+  script(src='/javascripts/product_center.js')

@@ -8,15 +8,10 @@ block sub-css
 block sub_content
 	.product-class-container
 		span 分类 : 
-		select.form-control.common-input#product-class
-			- if(data.datas.length>0)
-				- for(var i=0;i<data.datas.length;i++)
-					option #{data.datas[i].productClass}
-		span
-			a.create-class-a(href='/admin/addProductClass') 点此创建分类
+		input.form-control.common-input#product-class(type='text' value='#{data.product.productClass}')
 		.product-title-describe
 			span 标题 : 
-			input.form-control.common-input#product-title(type='text' placeholder='请输入产品名称标题说明')
+			input.form-control.common-input#product-title(type='text' value='#{data.product.data.title}')
 		.main-img-container
 			span 主图 :
 			.main-content#main-content 点击添加主图
@@ -60,28 +55,10 @@ block sub_content
 							button.ql-formula
 						span.ql-formats
 							button.ql-clean
-					div#editor-container
+					div#editor-container(data-content='#{data.product.data.content}')
 	.save-product#save-product 保存
-	.server-has-img 现有产品中心
-	- if(data.datas.length>0)
-		.table-container
-			table#table
-				tr
-					th 分类名
-					th 标题
-					th 操作
-				- for(var i=0;i<data.datas.length;i++)
-					- for(var j=0;j<data.datas[i].list.length;j++)
-						tr
-							td #{data.datas[i].productClass}
-							td #{data.datas[i].list[j].title}
-							td 
-								a.common-a.del-about-news(data-top-id='#{data.datas[i]._id}' data-list-id='#{data.datas[i].list[j]._id}') 删除
-								a.common-a.modify-about-news(data-top-id='#{data.datas[i]._id}' data-list-id='#{data.datas[i].list[j]._id}') 修改
-	- else
-		.no-data(style='margin-top:30px;') 暂无数据
 block sub-js
 	script(src="/dist/katex.min.js")
 	script(src="/dist/highlight.min.js")
 	script(src="/dist/quill.js")
-	script(src='/javascripts/admin_product_center.js')
+	script(src='/javascripts/admin_modify_product_list.js')

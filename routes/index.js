@@ -10,11 +10,27 @@ router.get('/',function(req, res, next){
 	});	
 });
 
+router.get('/en',function(req, res, next){
+	pageRender.renderIndex(req,res).then(function(data){
+		res.render('./en/index',{data:data});
+	}).fail(function(err){
+		res.render('./en/index',{});
+	});	
+});
+
 router.get('/index',function(req, res, next){
 	pageRender.renderIndex(req,res).then(function(data){
 		res.render('./index',{data:data});
 	}).fail(function(err){
 		res.render('./index',{});
+	});	
+});
+
+router.get('/en/index',function(req, res, next){
+	pageRender.renderIndex(req,res).then(function(data){
+		res.render('./en/index',{data:data});
+	}).fail(function(err){
+		res.render('./en/index',{});
 	});	
 });
 
@@ -27,12 +43,30 @@ router.get('/productCenter',function(req, res, next){
 	});	
 });
 
+router.get('/en/productCenter',function(req, res, next){
+	pageRender.renderProductCenter(req,res).then(function(data){
+		data.bg = '/images/product_bg.png';
+		res.render('./en/productCenter',{data:data});
+	}).fail(function(err){
+		res.render('./en/productCenter',{});
+	});	
+});
+
 router.get('/download',function(req, res, next){
 	pageRender.renderDownload(req,res).then(function(data){
 		data.bg = '/images/download_bg.png';
 		res.render('./download',{data:data});
 	}).fail(function(err){
 		res.render('./download',{});
+	});	
+});
+
+router.get('/en/download',function(req, res, next){
+	pageRender.renderDownload(req,res).then(function(data){
+		data.bg = '/images/download_bg.png';
+		res.render('./en/download',{data:data});
+	}).fail(function(err){
+		res.render('./en/download',{});
 	});	
 });
 
@@ -45,12 +79,30 @@ router.get('/support',function(req, res, next){
 	});	
 });
 
+router.get('/en/support',function(req, res, next){
+	pageRender.renderSupport(req,res).then(function(data){
+		data.bg = '/images/support_bg.png';
+		res.render('./en/support',{data:data});
+	}).fail(function(err){
+		res.render('./en/support',{});
+	});	
+});
+
 router.get('/contact',function(req, res, next){
 	pageRender.renderContact(req,res).then(function(data){
 		data.bg = '/images/contact_bg.png';
 		res.render('./contact',{data:data});
 	}).fail(function(err){
 		res.render('./contact',{});
+	});	
+});
+
+router.get('/en/contact',function(req, res, next){
+	pageRender.renderContact(req,res).then(function(data){
+		data.bg = '/images/contact_bg.png';
+		res.render('./en/contact',{data:data});
+	}).fail(function(err){
+		res.render('./en/contact',{});
 	});	
 });
 
@@ -63,6 +115,15 @@ router.get('/about',function(req, res, next){
 	});	
 });
 
+router.get('/en/about',function(req, res, next){
+	pageRender.renderAbout(req,res).then(function(data){
+		data.bg = '/images/about_bg.png';
+		res.render('./en/about',{data:data});
+	}).fail(function(err){
+		res.render('./en/about',{});
+	});	
+});
+
 router.get('/newsDetail',function(req,res){
 	pageRender.renderNewsDetail(req,res).then(function(data){
 		data.bg = '/images/detail_bg.png';
@@ -70,6 +131,16 @@ router.get('/newsDetail',function(req,res){
 		res.render('./newsDetail',{data:data});
 	}).fail(function(err){
 		res.render("./newsDetail",{});
+	});
+});
+
+router.get('/en/newsDetail',function(req,res){
+	pageRender.renderNewsDetail(req,res).then(function(data){
+		data.bg = '/images/detail_bg.png';
+		console.log(data);
+		res.render('./en/newsDetail',{data:data});
+	}).fail(function(err){
+		res.render("./en/newsDetail",{});
 	});
 });
 
@@ -165,6 +236,13 @@ router.get('/admin/modifyAboutNews',function(req,res){
 	pageRender.checkSessionByNews(req,res,function(err,data){
 		data.this_position = "关于我们-新闻修改";
 		res.render('./admin/modifyAboutNews',{data:data});
+	});
+});
+
+router.get('/admin/modifyProductList',function(req,res){
+	pageRender.checkSessionByModifyProductList(req,res,function(err,data){
+		data.this_position = "产品中心-修改";
+		res.render('./admin/modifyProductList',{data:data});
 	});
 });
 

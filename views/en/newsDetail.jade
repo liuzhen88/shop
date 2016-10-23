@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	.newsmore
+		.allheads.theme2
+			h2 新闻详情
+			p NEWS DETAIL
+		.newsmain
+			.title
+				b(title="#{data.news.title}") #{data.news.title}
+				label 发布时间：#{data.news.time}
+			.newsdetail
+				h2	#{data.news.title}
+				p !{data.news.content}
+block sub-js
+	script(src='/javascripts/news_details.js')

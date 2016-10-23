@@ -11,82 +11,82 @@ html
         .header(style="background:url('#{data.bg}') no-repeat center;") 
             .header-top
                 .middle
-                    a.header-logo(href='/index')
+                    a.header-logo(href='/en/index')
                         img(src='/images/index_logo.png')
-                    a.chinese(href='/index') 中文
-                    a.english(style='color:#000' href='/en/index') English
+                    span.chinese(style='color:#000') 中文
+                    span.english(style='color:#e14848') English
             .header-bottom
                 ul#header-ul
                     - if(!data || !data.router || data.router == 'index')
                         li.active
-                            a(href='/index')
+                            a(href='/en/index')
                                 img(src='/images/index_icon1.png', alt='')
-                                p 主 页
+                                p index
                     - else
                         li
-                            a(href='/index')
+                            a(href='/en/index')
                                 img(src='/images/index_icon1.png', alt='')
-                                p 主 页
+                                p index
                     - if(data && data.router && data.router == 'productCenter')
                         li.active
-                            a(href='/productCenter')
+                            a(href='/en/productCenter')
                                 img(src='/images/index_icon2.png', alt='')
-                                p 产品中心
+                                p product center
                     - else
                         li
-                            a(href='/productCenter')
+                            a(href='/en/productCenter')
                                 img(src='/images/index_icon2.png', alt='')
-                                p 产品中心
+                                p product center
                     - if(data && data.router && data.router == 'download')
                         li.active
-                            a(href='/download')
+                            a(href='/en/download')
                                 img(src='/images/index_icon3.png', alt='')
-                                p 文档下载
+                                p download
                     - else
                         li
-                            a(href='/download')
+                            a(href='/en/download')
                                 img(src='/images/index_icon3.png', alt='')
-                                p 文档下载
+                                p download
                     - if(data && data.router && data.router == 'support')
                         li.active
-                            a(href='/support')
+                            a(href='/en/support')
                                 img(src='/images/index_icon4.png', alt='')
-                                p 技术支持
+                                p support
                     - else
                         li
-                            a(href='/support')
+                            a(href='/en/support')
                                 img(src='/images/index_icon4.png', alt='')
-                                p 技术支持
+                                p support
                     - if(data && data.router && data.router == 'contact')
                         li.active
-                            a(href='/contact')
+                            a(href='/en/contact')
                                 img(src='/images/index_icon5.png', alt='')
-                                p 联系我们
+                                p contact
                     - else
                         li
-                            a(href='/contact')
+                            a(href='/en/contact')
                                 img(src='/images/index_icon5.png', alt='')
-                                p 联系我们
+                                p contact
                     - if(data && data.router && data.router == 'about')
                         li.active
-                            a(href='/about')
+                            a(href='/en/about')
                                 img(src='/images/index_icon6.png', alt='')
-                                p 关于我们
+                                p about
                     - else
                         li
-                            a(href='/about')
+                            a(href='/en/about')
                                 img(src='/images/index_icon6.png', alt='')
-                                p 关于我们
+                                p about
                     - if(data && data.router && data.router == 'shop')
                         li.active
                             a(href='')
                                 img(src='/images/index_icon7.png', alt='')
-                                p 网上商城
+                                p shop
                     - else
                         li
                             a(href='')
                                 img(src='/images/index_icon7.png', alt='')
-                                p 网上商城
+                                p shop
     block content
     .footer
         .footer-content
@@ -96,47 +96,47 @@ html
                     .footer-about-us-header 
                         i 关于我们
                     .footer-about-us-list 
-                        a(href="/about#about-content") 公司简介
+                        a(href="/en/about#about-content") 公司简介
                     .footer-about-us-list 
-                        a(href="/about#qualifications") 资质文件
+                        a(href="/en/about#qualifications") 资质文件
                     .footer-about-us-list 
-                        a(href="/about#company-news") 公司新闻
+                        a(href="/en/about#company-news") 公司新闻
                     .footer-about-us-list 
                         a(href="#") 公司环境
                 .footer-support
                     .footer-about-us-header 
                         i 技术支持
                     .footer-about-us-list 
-                        a(href="/support#setnames") 产品命名规则
+                        a(href="/en/support#setnames") 产品命名规则
                     .footer-about-us-list 
-                        a(href="/support#diy") 维修和定制业务
+                        a(href="/en/support#diy") 维修和定制业务
                     .footer-about-us-list 
-                        a(href="/support#download") 技术文章
+                        a(href="/en/support#download") 技术文章
                     .footer-about-us-list 
-                        a(href="/download#download-containers") 产品手册下载
+                        a(href="/en/download#download-containers") 产品手册下载
                 .footer-contact
                     .footer-about-us-header 
                         i 联系我们
                     .footer-support-address 
-                        a(href="/contact#map-title-contact") 地址 ： 江苏省南京市江宁区东麒路33号东山国际
+                        a(href="/en/contact#map-title-contact") 地址 ： 江苏省南京市江宁区东麒路33号东山国际
                     .footer-address 
-                        a(href="/contact#map-title-contact") 企业研发园4楼
+                        a(href="/en/contact#map-title-contact") 企业研发园4楼
                     .footer-email
                         .footer-about-us-headers 
                         .footer-support-email 
-                            a(href="/contact#map-title-contact") 邮编 ： 211100
+                            a(href="/en/contact#map-title-contact") 邮编 ： 211100
                     .footer-email
                         .footer-about-us-headers 
                         .footer-support-tel 
-                            a(href="/contact#map-title-contact") 电话 ： +86-25-58817997
+                            a(href="/en/contact#map-title-contact") 电话 ： +86-25-58817997
                 .footer-other
                     .footer-about-us-header
                     .footer-cz
-                        a(href="/contact#map-title-contact") 传真 ：+86-25-580722397
+                        a(href="/en/contact#map-title-contact") 传真 ：+86-25-580722397
                     .footer-yj
-                        a(href="/contact#map-title-contact") 邮件 ：sales@arance-rf.com( 销售 )
+                        a(href="/en/contact#map-title-contact") 邮件 ：sales@arance-rf.com( 销售 )
                     .footer-yj-null
-                        a(href="/contact#map-title-contact") tech@arance-rf.com( 技术支持 )
+                        a(href="/en/contact#map-title-contact") tech@arance-rf.com( 技术支持 )
     script(src='/javascripts/jquery-2.1.4.min.js')
     script(src='/javascripts/config.js')
     block sub-js
