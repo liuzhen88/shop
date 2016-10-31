@@ -10,8 +10,11 @@ block sub_content
 		span 分类 : 
 		input.form-control.common-input#product-class(type='text' value='#{data.product.productClass}')
 		.product-title-describe
-			span 标题 : 
+			span 标题(中文) : 
 			input.form-control.common-input#product-title(type='text' value='#{data.product.data.title}')
+		.product-title-describe
+			span 标题(英文) : 
+			input.form-control.common-input#product-title-en(type='text' value='#{data.product.data.titleEn}')
 		.main-img-container
 			span 主图 :
 			.main-content#main-content 点击添加主图
@@ -56,6 +59,46 @@ block sub_content
 						span.ql-formats
 							button.ql-clean
 					div#editor-container(data-content='#{data.product.data.content}')
+		.main-detail-content
+			span 内容 : 
+			div(style="width:90%;margin-top:10px;")
+				div#standalone-container
+					div#toolbar-containers
+						span.ql-formats
+							select.ql-font
+							select.ql-size
+						span.ql-formats
+							button.ql-bold
+							button.ql-italic
+							button.ql-underline
+							button.ql-strike
+						span.ql-formats
+							select.ql-color
+							select.ql-background
+						span.ql-formats
+							button.ql-script(value="sub")
+							button.ql-script(value="super")
+						span.ql-formats
+							button.ql-header(value="1")
+							button.ql-header(value="2")
+							button.ql-blockquote
+							button.ql-code-block
+						span.ql-formats
+							button.ql-list(value="ordered")
+							button.ql-list(value="bullet")
+							button.ql-indent(value="-1")
+							button.ql-indent(value="+1")
+						span.ql-formats
+							button.ql-direction(value="rtl")
+							select.ql-align
+						span.ql-formats
+							button.ql-link
+							button.ql-image
+							button.ql-video
+							button.ql-formula
+						span.ql-formats
+							button.ql-clean
+					div#editor-containers(data-content='#{data.product.data.enContent}')
 	.save-product#save-product 保存
 block sub-js
 	script(src="/dist/katex.min.js")

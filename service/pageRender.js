@@ -616,7 +616,9 @@ function checkSessionByModifyProductList(req, res, next){
 			            "url" : vv.url, 
 			            "fileType" : vv.fileType, 
 			            "fileName" : vv.fileName, 
-			            "title" : vv.title
+			            "title" : vv.title,
+			            "titleEn":vv.titleEn,
+			            "enContent":vv.enContent
 					}
 				}
 			});

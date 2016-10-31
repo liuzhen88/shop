@@ -1246,3 +1246,6 @@ body{
 .table-container th,.table-container td{
 	height: 40px;
 }
+.ql-editor{
+	height: 600px !important;
+}
