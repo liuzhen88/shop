@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var documentSchema = new mongoose.Schema({
 	classType:String,
+	downloadClassEn:String,
 	name:String,
 	data:[
 		{

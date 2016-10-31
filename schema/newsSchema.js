@@ -2,7 +2,9 @@ var mongoose = require('mongoose');
 
 var newsSchema = new mongoose.Schema({
 	title:String,
+	titleEn:String,
 	content:String,
+	enContent:String,
 	timeStr:String,
 	time:String
 });

@@ -280,7 +280,8 @@ body{
 }
 .server-has-img{
 	width: 100%;
-	height: 40px;
+	min-height: 500px;
+	height: auto;
 	line-height: 40px;
 	text-indent: 10px;
 	color: #8a8a8c;
@@ -308,7 +309,7 @@ body{
 .this-position-color{
 	color: #ff0000;
 }
-.password,#addNewProductClass,#addDownloadsClass,#addNewProductClassEn{
+.password,#addNewProductClass,#addDownloadsClass,#addNewProductClassEn,#addDownloadsClassEn{
 	width: 80%;
 	border:solid #e9eeef 1px;
 	height: 30px;

@@ -250,8 +250,10 @@ function productDocumentsPromise(fileName, dataBuffer, fileSize){
 function saveDownloadsClass(req, res){
 	var deferred = q.defer();
 	var downloadClass = req.body.downloadClass;
+	var downloadClassEn = req.body.downloadClassEn;
 	var documentsModel = new documentDownloadSchema({
 		classType:downloadClass,
+		downloadClassEn:downloadClassEn,
 		name:"product_explain_documents",
 		data:[]
 	});

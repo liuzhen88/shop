@@ -7,10 +7,14 @@ var limitNum = 14;
 function saveNews(req, res){
 	var deferred = q.defer();
 	var title = req.body.title;
+	var titleEn = req.body.titleEn;
 	var content = req.body.content;
+	var enContent = req.body.enContent;
 	var newsSchemaModel = new newsSchema({
 		title:title,
+		titleEn:titleEn,
 		content:content,
+		enContent:enContent,
 		timeStr:new Date().getTime(),
 		time:get_time(new Date().getTime())
 	});

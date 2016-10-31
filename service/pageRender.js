@@ -462,7 +462,7 @@ function getExplainData(callback){
 		docs.forEach(function(value,index){
 			var obj = {
 				id:value._id,
-				classType:value.classType
+				classType:value.classType + "(" + value.downloadClassEn + ")",
 			};
 			classType.push(obj);
 		});

@@ -12,18 +12,37 @@ $(function(){
 			    placeholder: 'Compose an epic...',
 			    theme: 'snow'
 			});
+			var quills = new Quill('#editor-containers', {
+			    modules: {
+			      formula: true,
+			      syntax: true,
+			      toolbar: '#toolbar-containers'
+			    },
+			    placeholder: 'Compose an epic...',
+			    theme: 'snow'
+			});
 			$('#save-news').click(function(){
-				var content = $(".ql-editor").html();
+				var content = $(".ql-editor").eq(0).html();
+				var enContent = $('.ql-editor').eq(1).html();
 				var title = $("#news-title").val();
+				var titleEn = $("#news-title-en").val();
 				if(!content){
-					alert("新闻内容不能为空");
+					alert("中文新闻内容不能为空");
+					return;
+				}
+				if(!enContent){
+					alert('英文新闻内容不能为空');
 					return;
 				}
 				if(!title){
 					alert('新闻标题不能为空');
 					return;
 				}
-				app.saveNews(title, content);
+				if(!titleEn){
+					alert('英文标题不能为空');
+					return;
+				}
+				app.saveNews(title, content, titleEn, enContent);
 			});
 
 			$(".del-about-news").click(function(){
@@ -34,14 +53,16 @@ $(function(){
 				}
 			});
 		},
-		saveNews:function(title, content){
+		saveNews:function(title, content, titleEn, enContent){
 			$.ajax({
 				url:serverUrl+"/users/saveNews",
 				type:'post',
 				dataType:'json',
 				data:{
 					title:title,
-					content:content
+					titleEn:titleEn,
+					content:content,
+					enContent:enContent
 				},
 				success:function(data){
 					if(data.code == 200){

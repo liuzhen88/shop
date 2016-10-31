@@ -4,8 +4,12 @@ block sub_content
 	.container-right-body
 		.form-control
 			div
-				span 新增分类名：
+				span 分类(中文)：
 				input#addDownloadsClass(type='text' placeholder='请输入新增产品分类名')
+		.form-control
+			div
+				span 分类(英文)：
+				input#addDownloadsClassEn(type='text' placeholder='请输入新增英文产品分类名')
 			.save-new-product-class#saveDownloads 保存
 block sub-js
 	script(src='/javascripts/admin_add_download_class.js')
