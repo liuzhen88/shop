@@ -7,12 +7,14 @@ function saveProductData(req, res){
 	var deferred = q.defer();
 	var productClass = req.body.productClass;
 	var title = req.body.title;
+	var titleEn = req.body.titleEn;
 	var main = req.body.main;
 	main = JSON.parse(main);
 	var fileName = main.fileName;
 	var fileType = main.fileType;
 	var source = main.source;
-	var content = req.body.content;
+	var content = req.body.zhContent;
+	var enContent = req.body.enContent;
 
 	var base64Data = source.replace(/^data:image\/\w+;base64,/, "");
 	var dataBuffer = new Buffer(base64Data, 'base64');
@@ -49,10 +51,12 @@ function saveProductData(req, res){
 			    		list:[
 			    			{
 			    				title:title,
+			    				titleEn:titleEn,
 					    		fileName:fileName,
 					    		fileType:fileType,
 					    		url:config.productUrl+"/"+lastFileName,
 					    		content:content,
+					    		enContent:enContent,
 					    		createTime:new Date().getTime()
 			    			}
 			    		]
@@ -71,10 +75,12 @@ function saveProductData(req, res){
 	    			var list = docs.list;
 	    			var lists = {
 	    				title:title,
+	    				titleEn:titleEn,
 			    		fileName:fileName,
 			    		fileType:fileType,
 			    		url:config.productUrl+"/"+lastFileName,
 			    		content:content,
+			    		enContent:enContent,
 			    		createTime:new Date().getTime()
 	    			};
 	    			list.push(lists);
@@ -103,8 +109,10 @@ function saveProductData(req, res){
 function saveNewProductClass(req, res){
 	var deferred = q.defer();
 	var productClass = req.body.productClass;
+	var productClassEn = req.body.productClassEn;
 	var insertData = new productCenterSchema({
 		productClass:productClass,
+		productClassEn:productClassEn,
 		list:[]
 	});
 	insertData.save(function(err){

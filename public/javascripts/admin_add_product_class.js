@@ -2,8 +2,13 @@ $(function(){
 	$('.list').removeClass('has-select');
 	$('#saveProductName').click(function(){
 		var productClass = $('#addNewProductClass').val();
+		var productClassEn = $("#addNewProductClassEn").val();
 		if(!productClass){
 			alert("请输入产品分类名");
+			return;
+		}
+		if(!productClassEn){
+			alert('请输入英文名');
 			return;
 		}
 		$.ajax({

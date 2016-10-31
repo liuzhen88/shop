@@ -32,22 +32,34 @@ $(function(){
 	    placeholder: 'Compose an epic...',
 	    theme: 'snow'
 	});
+	var quills = new Quill('#editor-containers', {
+	    modules: {
+	      formula: true,
+	      syntax: true,
+	      toolbar: '#toolbar-containers'
+	    },
+	    placeholder: 'Compose an epic...',
+	    theme: 'snow'
+	});
 	$("#save-product").click(function(){
 		var productClass = $("#product-class").val();
 		var title = $("#product-title").val();
+		var titleEn = $("#product-title-en").val();
 		var main = {
 			fileName:$('.product-main-image').attr('data-fileName'),
 			fileType:$(".product-main-image").attr('data-fileType'),
 			source:$('.product-main-image').attr('src')
 		};
-		var content = $('.ql-editor').html();
+		//var content = $('.ql-editor').html();
 		var f = confirm('确定要保存吗?');
 		if(f){
-			saveProductData(productClass,title,main,content);
+			var zhContent = $(".ql-editor").eq(0).html();
+			var enContent = $(".ql-editor").eq(1).html();
+			saveProductData(productClass,title,titleEn,main,zhContent,enContent);
 		}
 	});
 
-	function saveProductData(productClass, title, main, content){
+	function saveProductData(productClass, title, titleEn, main, zhContent, enContent){
 		$.ajax({
 			url:serverUrl+"/users/saveProductData",
 			type:'post',
@@ -55,8 +67,10 @@ $(function(){
 			data:{
 				productClass:productClass,
 				title:title,
+				titleEn:titleEn,
 				main:JSON.stringify(main),
-				content:content
+				zhContent:zhContent,
+				enContent:enContent
 			},
 			success:function(data){
 				if(data.code == '200'){
