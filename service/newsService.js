@@ -101,14 +101,18 @@ function upateNewsContentById(req, res){
 	var deferred = q.defer();
 	var id = req.body.id;
 	var title = req.body.title;
+	var titleEn = req.body.titleEn;
 	var content = req.body.content;
+	var enContent = req.body.enContent;
 
 	newsSchema.update({
 		"_id":id
 	},{
 		$set:{
 			title:title,
-			content:content
+			titleEn:titleEn,
+			content:content,
+			enContent:enContent
 		}
 	},function(err){
 		if(err){

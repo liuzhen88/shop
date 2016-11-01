@@ -7,8 +7,12 @@ block sub-css
 	link(href="/css/themes/quill.snow.css" rel="stylesheet")
 block sub_content
 	.news-title
-		span 新闻标题 ：
+		span 新闻标题(中文) ：
 		input.form-control.new-title-container#news-title(type='text' value='#{data.news.title}') 
+	.news-title
+		span 新闻标题(英文) ：
+		input.form-control.new-title-container#news-title-en(type='text' value='#{data.news.titleEn}') 
+	div 中文内容:
 	div(style="width:100%;")
 		div#standalone-container
 			div#toolbar-container
@@ -47,6 +51,45 @@ block sub_content
 				span.ql-formats
 					button.ql-clean
 			div#editor-container !{data.news.content}
+	div 英文内容:
+	div(style="width:100%;")
+		div#standalone-container
+			div#toolbar-containers
+				span.ql-formats
+					select.ql-font
+					select.ql-size
+				span.ql-formats
+					button.ql-bold
+					button.ql-italic
+					button.ql-underline
+					button.ql-strike
+				span.ql-formats
+					select.ql-color
+					select.ql-background
+				span.ql-formats
+					button.ql-script(value="sub")
+					button.ql-script(value="super")
+				span.ql-formats
+					button.ql-header(value="1")
+					button.ql-header(value="2")
+					button.ql-blockquote
+					button.ql-code-block
+				span.ql-formats
+					button.ql-list(value="ordered")
+					button.ql-list(value="bullet")
+					button.ql-indent(value="-1")
+					button.ql-indent(value="+1")
+				span.ql-formats
+					button.ql-direction(value="rtl")
+					select.ql-align
+				span.ql-formats
+					button.ql-link
+					button.ql-image
+					button.ql-video
+					button.ql-formula
+				span.ql-formats
+					button.ql-clean
+			div#editor-containers !{data.news.enContent}
 	.save-news#save-news(data-id='#{data.news._id}') 保存提交
 block sub-js
 	script(src="/dist/katex.min.js")

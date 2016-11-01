@@ -207,4 +207,12 @@ router.get('/deletePrecentCenterDocument',function(req,res){
 	});
 });
 
+router.post('/updateProductCenterData',function(req,res){
+	productCenterService.updateProductCenterData(req,res).then(function(data){
+		res.send(data);
+	}).fail(function(err){
+		res.send(err);
+	});
+});
+
 module.exports = router;

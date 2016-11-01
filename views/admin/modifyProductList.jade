@@ -19,8 +19,10 @@ block sub_content
 			span 主图 :
 			.main-content#main-content 点击添加主图
 				input(type='file' id='main-input')
+				img(src='#{data.product.data.url}' data-filename="" data-filetype="" class='product-main-image' width='200px' height='132px')
+				.del-product-main-image 删除
 		.main-detail-content
-			span 内容 : 
+			span 中文内容 : 
 			div(style="width:90%;margin-top:10px;")
 				div#standalone-container
 					div#toolbar-container
@@ -60,7 +62,7 @@ block sub_content
 							button.ql-clean
 					div#editor-container(data-content='#{data.product.data.content}')
 		.main-detail-content
-			span 内容 : 
+			span 英文内容 : 
 			div(style="width:90%;margin-top:10px;")
 				div#standalone-container
 					div#toolbar-containers

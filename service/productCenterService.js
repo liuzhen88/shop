@@ -199,9 +199,93 @@ function deletePrecentCenterDocument(req, res){
 	return deferred.promise;
 }
 
+function updateProductCenterData(req, res){
+	var deferred = q.defer();
+	var title = req.body.title;
+	var titleEn = req.body.titleEn;
+	var content = req.body.content;
+	var enContent = req.body.enContent;
+	var status = req.body.status;
+	var id = req.body.id;
+	var listId = req.body.listId;
+	if(status == 0){
+		//图片不更新
+		productCenterSchema.update({
+			"_id":id,
+			"list._id":listId
+		},{
+			$set:{
+				'list.$.title':title,
+				'list.$.titleEn':titleEn,
+				'list.$.content':content,
+				'list.$.enContent':enContent
+			}
+		},function(err){
+			if(err){
+				console.log(err);
+				deferred.reject(err);
+			}else{
+				var cont = config.data.success;
+				deferred.resolve(cont);
+			}
+		});
+	}else{
+		//图片重新写入
+		var source = req.body.source;
+		var fileName = req.body.fileName;
+		var fileType = req.body.fileType;
+
+		var base64Data = source.replace(/^data:image\/\w+;base64,/, "");
+		var dataBuffer = new Buffer(base64Data, 'base64');
+
+		var lastFileName = new Date().getTime()+"."+fileType;
+		var newFilePath = config.productPath + lastFileName;
+		fs.writeFile(fileName,dataBuffer,function(err){
+			if(err){
+		    	var cont = config.data.error;
+		    	cont.message = err;
+		      	deferred.reject(cont);
+		    }
+		    fs.rename(fileName,newFilePath,function(err){
+		    	if(err){
+		    		console.log("file rename is error:"+err);
+		    		var cont = config.data.error;
+			    	cont.message = err;
+			      	deferred.reject(cont);
+		    	}
+		    	//new image path = config.productUrl+"/"+lastFileName
+		    	productCenterSchema.update({
+		    		'_id':id,
+		    		'list._id':listId
+		    	},{
+		    		$set:{
+		    			'list.$.title':title,
+		    			'list.$.titleEn':titleEn,
+		    			'list.$.content':content,
+		    			'list.$.enContent':enContent,
+		    			'list.$.url':config.productUrl+"/"+lastFileName,
+		    			'list.$.fileType':fileType,
+		    			'list.$.fileName':fileName
+		    		}
+		    	},function(err){
+		    		if(err){
+		    			deferred.reject(err);
+		    		}else{
+		    			var t = config.data.success;
+		    			deferred.resolve(t);
+		    		}
+		    	});
+		    });
+		});
+	}
+
+	return deferred.promise;
+}
+
 module.exports = {
 	saveProductData:saveProductData,
 	saveNewProductClass:saveNewProductClass,
 	getProductClassDataById:getProductClassDataById,
-	deletePrecentCenterDocument:deletePrecentCenterDocument
+	deletePrecentCenterDocument:deletePrecentCenterDocument,
+	updateProductCenterData:updateProductCenterData
 }

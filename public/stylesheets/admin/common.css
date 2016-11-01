@@ -280,8 +280,6 @@ body{
 }
 .server-has-img{
 	width: 100%;
-	min-height: 500px;
-	height: auto;
 	line-height: 40px;
 	text-indent: 10px;
 	color: #8a8a8c;
