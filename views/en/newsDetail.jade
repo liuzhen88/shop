@@ -7,10 +7,10 @@ block content
 			p NEWS DETAIL
 		.newsmain
 			.title
-				b(title="#{data.news.title}") #{data.news.title}
+				b(title="#{data.news.titleEn}") #{data.news.titleEn}
 				label 发布时间：#{data.news.time}
 			.newsdetail
-				h2	#{data.news.title}
-				p !{data.news.content}
+				h2	#{data.news.titleEn}
+				p !{data.news.enContent}
 block sub-js
 	script(src='/javascripts/news_details.js')

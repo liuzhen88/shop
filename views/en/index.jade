@@ -60,16 +60,16 @@ html
         - for(var i=0;i<data.productCenter.length;i++)
           li
             a(href='/en/productCenter')
-              p #{data.productCenter[i].productClass}
+              p #{data.productCenter[i].productClassEn}
               img(src='/images/index_producttosee.png', alt='')
             - if(data.productCenter[i].list.length>0)
               img(width='270px' height='230px' src='#{data.productCenter[i].list[0].url}', alt='')
     .index_intro
       .index_intro1
-        .intro_l
-          h2 南京安崇电子有限公司
+        .intro_l(style='height:360px;')
+          h2 Nanjing Ancong electronics company
           p
-            | 南京安崇电子有限公司是一家从事射频微波精密测试附件的专业性公司。公司业务范围覆盖射频微波校准件、射频电缆组件、其它高性能测试相关的微波器件的开发、生产及维修服务。公司具有严谨的设计，精密的机加工，采用一流的材料与工艺，为您提供日益丰富的解决方案和产品测试方面提供全方位的服务。公司以专业化的产品、可靠的质量、良好的信誉为生存之本，以客户需求为导向，竭诚为海内外客户提供服务。
+            | Nanjing Ancong electronics company is a professional company engaged in RF microwave precision test accessories. The company's business scope covers the development, production and maintenance of RF and microwave calibration devices, RF cable assemblies and other high performance testing related microwave devices. The company has rigorous design, precision machining, the use of first-class materials and processes, to provide you with an increasing range of solutions and product testing to provide a full range of services. Company to professional products, reliable quality, good reputation for the survival of the present, to customer demand as the guide, dedicated to provide services for customers at home and abroad.
           a(href='/en/about') 查看更多 +
         .intro_r
           div
@@ -88,10 +88,10 @@ html
                   | #{data.news[i].time.split('-')[2]}号
               .rightcontain
                 h2.title
-                  b(title='新闻标题') #{data.news[i].title}
+                  b(title='新闻标题') #{data.news[i].titleEn}
                   span #{data.news[i].time}
-                p(title='#{data.news[i].content}')
-                  | !{data.news[i].content}
+                p(title='#{data.news[i].enContent}')
+                  | !{data.news[i].enContent}
                 a(href='/en/newsDetail?id=#{data.news[i]._id}') 查看更多
         a.seemore(href='/en/about#company-news') 查看更多
     .footer
