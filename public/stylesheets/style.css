@@ -711,6 +711,12 @@ dd{
 	text-indent:28px;
 	margin-top:14px;
 	}
+.newsmore .newsdetail p img{
+	margin: 0 auto;
+	display: block;
+  	padding:20px 0px;
+	width:800px;
+	height:500px;}
 .theme2{
 	background-image:url(../images/contact_underline.png) !important;}
 .theme2 h2{
