@@ -16,92 +16,131 @@ function saveProductData(req, res){
 	var content = req.body.zhContent;
 	var enContent = req.body.enContent;
 
+	var sendFile = req.body.sendFile;
+	sendFile = JSON.parse(sendFile);
+	var pdfData = sendFile[0];
+
 	var base64Data = source.replace(/^data:image\/\w+;base64,/, "");
 	var dataBuffer = new Buffer(base64Data, 'base64');
 
 	var lastFileName = new Date().getTime()+"."+fileType;
 	var newFilePath = config.productPath + lastFileName;
 
-	fs.writeFile(fileName,dataBuffer,function(err){
+	var pdfBase64Data = pdfData.source.replace(/^data:;base64,/, "");
+	var pdfDataBuffer = new Buffer(pdfBase64Data,'base64');//pdf buffer
+	var pdfLastFileName = new Date.getTime()+"."+pdfData.fileType;
+	var pdfNewFilePath = config.productPath + pdfLastFileName;
+
+
+	fs.writeFile(pdfData.fileName,pdfDataBuffer,function(err){
 		if(err){
-	    	var cont = config.data.error;
+			var cont = config.data.error;
 	    	cont.message = err;
 	      	deferred.reject(cont);
-	    }
-	    fs.rename(fileName,newFilePath,function(err){
-	    	if(err){
-	    		console.log("file rename is error:"+err);
-	    		var cont = config.data.error;
-		    	cont.message = err;
-		      	deferred.reject(cont);
-	    	}
-	    	//write success then save product center data 	
+	      }else{
+	      	fs.rename(pdfData.fileName,pdfNewFilePath,function(err){
+	      		if(err){
+		    		console.log("file rename is error:"+err);
+		    		var cont = config.data.error;
+			    	cont.message = err;
+			      	deferred.reject(cont);
+		    	}else{
 
-	    	productCenterSchema.findOne({
-	    		"productClass":productClass
-	    	},function(err,docs){
-	    		if(err){
-	    			console.log(err);
-	    			deferred.reject(err);
-	    		}
-	    		if(!docs){
-	    			//新建
-	    			var productCenterData = new productCenterSchema({
-			    		productClass:productClass,
-			    		list:[
-			    			{
-			    				title:title,
-			    				titleEn:titleEn,
-					    		fileName:fileName,
-					    		fileType:fileType,
-					    		url:config.productUrl+"/"+lastFileName,
-					    		content:content,
-					    		enContent:enContent,
-					    		createTime:new Date().getTime()
-			    			}
-			    		]
-			    	});
-			    	productCenterData.save(function(err){
-			    		if(err){
-			    			console.log(err);
-			    			deferred.reject(err);
-			    		}
-			    		var context = config.data.success;
-			    		deferred.resolve(context);
-			    	});
-	    		}else{
-	    			//更新
-	    			var id = docs._id;
-	    			var list = docs.list;
-	    			var lists = {
-	    				title:title,
-	    				titleEn:titleEn,
-			    		fileName:fileName,
-			    		fileType:fileType,
-			    		url:config.productUrl+"/"+lastFileName,
-			    		content:content,
-			    		enContent:enContent,
-			    		createTime:new Date().getTime()
-	    			};
-	    			list.push(lists);
-	    			productCenterSchema.update({
-	    				"_id":id
-	    			},{
-	    				$set:{
-	    					list:list
-	    				}
-	    			},function(err){
-	    				if(err){
-	    					console.log(err);
-	    					deferred.reject(err);
-	    				}
-	    				var context = config.data.success;
-			    		deferred.resolve(context);
-	    			}); 
-	    		}
-	    	});	
-	    });
+					fs.writeFile(fileName,dataBuffer,function(err){
+						if(err){
+					    	var cont = config.data.error;
+					    	cont.message = err;
+					      	deferred.reject(cont);
+					    }
+					    fs.rename(fileName,newFilePath,function(err){
+					    	if(err){
+					    		console.log("file rename is error:"+err);
+					    		var cont = config.data.error;
+						    	cont.message = err;
+						      	deferred.reject(cont);
+					    	}
+					    	//write success then save product center data 	
+
+					    	productCenterSchema.findOne({
+					    		"productClass":productClass
+					    	},function(err,docs){
+					    		if(err){
+					    			console.log(err);
+					    			deferred.reject(err);
+					    		}
+					    		if(!docs){
+					    			//新建
+					    			var productCenterData = new productCenterSchema({
+							    		productClass:productClass,
+							    		list:[
+							    			{
+							    				title:title,
+							    				titleEn:titleEn,
+									    		fileName:fileName,
+									    		fileType:fileType,
+									    		url:config.productUrl+"/"+lastFileName,
+									    		content:content,
+									    		enContent:enContent,
+									    		createTime:new Date().getTime(),
+									    		pdf:{
+									    			fileName:pdfData.fileName,
+									    			fileType:pdfData.fileType,
+									    			url:pdfNewFilePath
+									    		}
+							    			}
+							    		]
+							    	});
+							    	productCenterData.save(function(err){
+							    		if(err){
+							    			console.log(err);
+							    			deferred.reject(err);
+							    		}
+							    		var context = config.data.success;
+							    		deferred.resolve(context);
+							    	});
+					    		}else{
+					    			//更新
+					    			var id = docs._id;
+					    			var list = docs.list;
+					    			var lists = {
+					    				title:title,
+					    				titleEn:titleEn,
+							    		fileName:fileName,
+							    		fileType:fileType,
+							    		url:config.productUrl+"/"+lastFileName,
+							    		content:content,
+							    		enContent:enContent,
+							    		createTime:new Date().getTime(),
+							    		pdf:{
+							    			fileName:pdfData.fileName,
+							    			fileType:pdfData.fileType,
+							    			url:pdfNewFilePath
+							    		}
+					    			};
+					    			list.push(lists);
+					    			productCenterSchema.update({
+					    				"_id":id
+					    			},{
+					    				$set:{
+					    					list:list
+					    				}
+					    			},function(err){
+					    				if(err){
+					    					console.log(err);
+					    					deferred.reject(err);
+					    				}
+					    				var context = config.data.success;
+							    		deferred.resolve(context);
+					    			}); 
+					    		}
+					    	});	
+					    });
+					});
+		    	}
+	      	});
+	      }
 	});
+
 
 	return deferred.promise;
 }

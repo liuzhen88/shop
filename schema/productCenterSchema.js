@@ -12,7 +12,12 @@ var productCenterSchema = new mongoose.Schema({
 			url:String,
 			content:String,
 			enContent:String,
-			createTime:String
+			createTime:String,
+			pdf:{
+				fileName:String,
+				fileType:String,
+				url:String
+			}
 		}
 	]
 });

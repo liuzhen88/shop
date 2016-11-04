@@ -104,6 +104,12 @@ block sub_content
 						span.ql-formats
 							button.ql-clean
 					div#editor-containers
+		.product-pdf-upload
+			span 上传pdf压缩包:
+		.product-pdf-upload
+			input#pdf(type='file')
+			.ips 上传pdf压缩包
+		#upload-container
 	.save-product#save-product 保存
 	.server-has-img 现有产品中心
 	- if(data.datas.length>0)

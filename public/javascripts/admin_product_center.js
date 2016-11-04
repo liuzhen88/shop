@@ -1,4 +1,5 @@
 $(function(){
+	var sendFile = [];
 	var productMainImage = {};
 	$(".list").removeClass('has-select');
 	$(".list").eq(1).addClass('has-select');
@@ -42,6 +43,14 @@ $(function(){
 	    theme: 'snow'
 	});
 	$("#save-product").click(function(){
+		if(sendFile.length == 0){
+			alert('请上传pdf压缩文件');
+			return;
+		}
+		if(sendFile.length>1){
+			alert('上传pdf压缩文件个数只能为1');
+			return;
+		}
 		var productClass = $("#product-class").val();
 		var title = $("#product-title").val();
 		var titleEn = $("#product-title-en").val();
@@ -55,11 +64,11 @@ $(function(){
 		if(f){
 			var zhContent = $(".ql-editor").eq(0).html();
 			var enContent = $(".ql-editor").eq(1).html();
-			saveProductData(productClass,title,titleEn,main,zhContent,enContent);
+			saveProductData(productClass,title,titleEn,main,zhContent,enContent,sendFile);
 		}
 	});
 
-	function saveProductData(productClass, title, titleEn, main, zhContent, enContent){
+	function saveProductData(productClass, title, titleEn, main, zhContent, enContent, sendFile){
 		$.ajax({
 			url:serverUrl+"/users/saveProductData",
 			type:'post',
@@ -70,7 +79,8 @@ $(function(){
 				titleEn:titleEn,
 				main:JSON.stringify(main),
 				zhContent:zhContent,
-				enContent:enContent
+				enContent:enContent,
+				sendFile:JSON.stringify(sendFile)
 			},
 			success:function(data){
 				if(data.code == '200'){
@@ -109,4 +119,32 @@ $(function(){
 		var listId = $(this).attr('data-list-id');
 		window.location.href='/admin/modifyProductList?id='+id+'&listId='+listId;
 	});
+
+	var uploads = document.getElementById("pdf");
+	uploads.onchange = function(e){
+		var file = e.target.files[0];
+		var fileSize = file.size;
+		var fileName = file.name;
+		var typelz = file.type;
+		if(typelz && (typelz.indexOf('zip')<0 && typelz.indexOf('rar')<0)){
+			alert("请上传压缩文件");
+		}else{
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function(e){
+				var source = this.result;
+				var obj = {
+					fileSize:fileSize,
+					fileName:fileName,
+					source:source
+				};
+				sendFile.push(obj);
+				var sub = "<span class='zip'>"
+						+	"<img src='/images/zip.png'>"
+						+	"<div>"+fileName+"</div>"	
+						+"</span>";
+				$("#upload-container").append(sub);
+			}
+		}
+	}
 });

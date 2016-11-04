@@ -1099,7 +1099,7 @@ body{
 	color: #fff;
 	background: #14ACFC;
 }
-.main-detail-content{
+.main-detail-content,.product-pdf-upload{
 	margin-top: 20px;
 }
 .common-input{
@@ -1247,4 +1247,31 @@ body{
 }
 .ql-editor{
 	height: 600px !important;
+}
+.product-pdf-upload{
+	width: 200px;
+	height: 40px;
+	position: relative;
+}
+.ips{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 200px;
+	height: 40px;
+	z-index: 10;
+	text-align: center;
+	line-height: 40px;
+	background: #14ACFC;
+	color: #fff;
+}
+#pdf{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	width: 200px;
+	height: 40px;
+	margin-left: 20px;
+	opacity: 0;
 }
