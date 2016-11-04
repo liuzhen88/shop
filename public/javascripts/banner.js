@@ -106,4 +106,10 @@ $(function(){
 		$(this).css("background","none");
 		$(this).find("em").removeClass("emcss");
 			})
+	$(".rightcontain").each(function(index,value){
+		$(this).find('p').hide();
+		$(this).find('p').find('img').hide();
+		$(this).find('p').eq(1).show();
+		$(this).find('p').eq(1).css('margin-top','10px');
+	});
 	})
