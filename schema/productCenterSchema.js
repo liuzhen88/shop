@@ -15,7 +15,6 @@ var productCenterSchema = new mongoose.Schema({
 			createTime:String,
 			pdf:{
 				fileName:String,
-				fileType:String,
 				url:String
 			}
 		}

@@ -28,7 +28,7 @@ function saveProductData(req, res){
 
 	var pdfBase64Data = pdfData.source.replace(/^data:;base64,/, "");
 	var pdfDataBuffer = new Buffer(pdfBase64Data,'base64');//pdf buffer
-	var pdfLastFileName = new Date().getTime()+"."+pdfData.fileType;
+	var pdfLastFileName = new Date().getTime()+pdfData.fileName;
 	var pdfNewFilePath = config.productPath + pdfLastFileName;
 
 
@@ -84,8 +84,7 @@ function saveProductData(req, res){
 									    		createTime:new Date().getTime(),
 									    		pdf:{
 									    			fileName:pdfData.fileName,
-									    			fileType:pdfData.fileType,
-									    			url:pdfNewFilePath
+									    			url:productUrl+"/"+pdfLastFileName
 									    		}
 							    			}
 							    		]
@@ -113,8 +112,7 @@ function saveProductData(req, res){
 							    		createTime:new Date().getTime(),
 							    		pdf:{
 							    			fileName:pdfData.fileName,
-							    			fileType:pdfData.fileType,
-							    			url:pdfNewFilePath
+							    			url:productUrl+"/"+pdfLastFileName
 							    		}
 					    			};
 					    			list.push(lists);
