@@ -84,7 +84,7 @@ function saveProductData(req, res){
 									    		createTime:new Date().getTime(),
 									    		pdf:{
 									    			fileName:pdfData.fileName,
-									    			url:productUrl+"/"+pdfLastFileName
+									    			url:config.productUrl+"/"+pdfLastFileName
 									    		}
 							    			}
 							    		]
@@ -112,7 +112,7 @@ function saveProductData(req, res){
 							    		createTime:new Date().getTime(),
 							    		pdf:{
 							    			fileName:pdfData.fileName,
-							    			url:productUrl+"/"+pdfLastFileName
+							    			url:config.productUrl+"/"+pdfLastFileName
 							    		}
 					    			};
 					    			list.push(lists);
