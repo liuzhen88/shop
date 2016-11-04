@@ -40,6 +40,7 @@ block content
       .rightproduct
         - if(data.data.length>0)
           .cont#checkedClassContent !{data.data[0].list[0].content}
-        input(type='button', value='下载pdf')
+        - if(data.data.length>0)
+          input(type='button', value='下载pdf' id='download-pdf' data-href='#{data.data[0].list[0].pdf.url}')
 block sub-js
   script(src='/javascripts/product_center.js')

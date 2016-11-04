@@ -1,9 +1,18 @@
 $(document).ready(function(e) {
+	var href = $("#download-pdf").attr('data-href');
+	if(!href || href == 'undefined'){
+		href = "#";
+	}
 	$(".navs li").click(function(){
 		$(this).addClass("lisa").siblings("li").removeClass("lisa")
 		var id = $(this).attr('data-id');
 		getProductClassDataById(id,function(result){
 			var lists = result.data.list;
+			if(lists[0].pdf){
+				href = lists[0].pdf.url;
+			}else{
+				href = '';
+			}
 			for(var i=0;i<lists.length;i++){
 				if(i == 0){
 					var subdiv = "<li class='checked product-class-list' data-id="+lists[i]._id+">"
@@ -33,6 +42,11 @@ $(document).ready(function(e) {
 				$("#checkedClassTitle").html(thatData.title);
 				$("#checkedClassContent").html(thatData.content);
 				$("#selectedTitle").html(thatData.title);
+				if(thatData.pdf){
+					href = thatData.pdf.url;
+				}else{
+					href = '';
+				}
 			});
 
 			if(lists.length>0){
@@ -92,5 +106,9 @@ $(document).ready(function(e) {
 		$("#checkedClassTitle").html(thatData.title);
 		$("#checkedClassContent").html(thatData.content);
 		$("#selectedTitle").html(thatData.title);
+	});
+
+	$("#download-pdf").click(function(){
+		window.location.href = href;
 	});
 });
